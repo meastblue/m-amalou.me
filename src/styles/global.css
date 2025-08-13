@@ -1,0 +1,240 @@
+@import './design-system.css';
+@import "tailwindcss";
+
+/* CSS Variables */
+:root {
+  /* Brand colors */
+  --color-primary: #3b82f6;
+  --color-secondary: #6b7280;
+  --color-accent: #f59e0b;
+
+  /* Light theme (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-surface: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme - Tailwind v4 approach */
+:root.dark,
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-surface: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --border-color: #475569;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Initialize dark mode by default */
+:root {
+  color-scheme: dark;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Sharp Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+/* Sharp Sans Font Family */
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Thin Italic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Light Italic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Medium Italic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Semibold Italic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/SharpSansBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Bold Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans Extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sharp Sans';
+  src: url('../assets/fonts/Sharp Sans ExtraBold Italic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Tailwind Custom Utilities */
+@layer utilities {
+  .font-sharp {
+    font-family: 'Sharp Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  /* Fade in up animation for skill pills */
+  .animate-fadeInUp {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Enhanced skill section animations with performance optimizations */
+  .animate-expand {
+    animation: expandDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    overflow: hidden;
+    will-change: max-height, opacity, transform;
+  }
+  
+  .animate-collapse {
+    animation: collapseUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    overflow: hidden;
+    will-change: max-height, opacity, transform;
+  }
+  
+  /* Performance-optimized keyframes using GPU acceleration */
+  @keyframes expandDown {
+    from {
+      opacity: 0;
+      max-height: 0;
+      transform: translate3d(0, -10px, 0) scale(0.98);
+    }
+    50% {
+      opacity: 0.8;
+      max-height: 500px;
+    }
+    to {
+      opacity: 1;
+      max-height: 1000px;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+  
+  @keyframes collapseUp {
+    from {
+      opacity: 1;
+      max-height: 1000px;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      max-height: 500px;
+    }
+    to {
+      opacity: 0;
+      max-height: 0;
+      transform: translate3d(0, -10px, 0) scale(0.98);
+    }
+  }
+  
+  /* Enhanced pill animations with stagger optimization */
+  .animate-fadeInUp {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    will-change: opacity, transform;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  /* Focus ring enhancement for accessibility */
+  .focus-within\:ring-2:focus-within {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  }
+}

@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import About from "../components/sections/About.tsx";
+import CareerAndScholarship from "../components/sections/CareerAndScholarship.tsx";
+import Contact from "../components/sections/Contact.tsx";
+import Header from "../components/sections/Header.tsx";
+import Hero from "../components/sections/Hero.tsx";
+import Projects from "../components/sections/Projects.tsx";
+import Skills from "../components/sections/Skills.tsx";
+import Socials from "../components/sections/Socials.tsx";
+import Navigation from "../components/ui/Navigation.tsx";
+import ScrollProgress from "../components/ui/ScrollProgress.tsx";
+---
+
+<Layout>
+  <ScrollProgress client:load />
+  <Header client:load />
+  <Hero client:visible />
+  <About client:visible />
+  <CareerAndScholarship client:visible />
+  <Projects client:visible />
+  <Skills client:visible />
+  <Contact client:visible />
+  <Socials client:visible />
+  <Navigation client:idle />
+</Layout>

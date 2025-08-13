@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Professional portfolio showcasing technical expertise in architecture, API governance, and system development" />
+    <meta name="keywords" content="portfolio, developer, architect, API, governance, technical lead" />
+    <meta name="author" content="Portfolio" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Professional Portfolio" />
+    <meta property="og:description" content="Technical expertise in architecture and system development" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Professional Portfolio" />
+    <meta property="twitter:description" content="Technical expertise in architecture and system development" />
+    
+    <title>Portfolio - Technical Architect & Developer</title>
+    <script>
+      // Ensure dark mode is set by default
+      if (!localStorage.getItem('portfolio-theme')) {
+        localStorage.setItem('portfolio-theme', 'dark');
+        document.documentElement.classList.add('dark');
+      } else {
+        const theme = localStorage.getItem('portfolio-theme');
+        if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    </script>
+  </head>
+  <body class="font-sharp">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg z-50">
+      Skip to main content
+    </a>
+    
+    <main id="main-content" role="main">
+      <slot />
+    </main>
+  </body>
+</html>

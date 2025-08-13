@@ -1,0 +1,219 @@
+{
+  "personal": {
+    "name": "Massinissa Amalou",
+    "title_one": "architecte logiciel & solution",
+    "title_two": "developper fullstack web & mobile"
+  },
+  "sections": {
+    "header": {
+      "title": "Massinissa Amalou"
+    },
+    "hero": {
+      "title": "",
+      "content": "Architecte logiciel & solution polyvalent, j'accompagne les équipes projets dans la conception d'architectures robustes, évolutives et alignées sur les enjeux métiers."
+    },
+    "about": {
+      "title": "Profil",
+      "content": "fort d'une solide expérience en pilotage technique, en gouvernance d'api et en urbanisation de systèmes, j'interviens de bout en bout sur les projets, de la définition de la cible jusqu'à la mise en production. spécialisé dans la conception d'architectures applicatives, la gouvernance des api, et l'accompagnement produit, je garantis la robustesse et la scalabilité des solutions en collaboration avec les équipes de développement."
+    },
+    "projects": {
+      "title": "Projets"
+    },
+    "skills": {
+      "title": "Expertise"
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "career": {
+      "title": "Career"
+    },
+    "scholarship": {
+      "title": "Scholarship"
+    }
+  },
+  "career": [
+    {
+      "company": "Autodistribution",
+      "period": "2023 - aujourd'hui",
+      "position": "architecte logiciel & solution",
+      "description": "intervention technique sur plusieurs projets stratégiques, incluant la conception d'architectures applicatives, la gouvernance des api, et l'accompagnement produit. projets: store api (marketplace d'apis), hub360 (plateforme crm), lynx (erp multi-entités), mead (refonte extranet b2b), catgr (référentiel européen carrosserie).",
+      "location": "PARIS, FRANCE"
+    },
+    {
+      "company": "Crédit Agricole CIB",
+      "period": "2020 - 2023",
+      "position": "technical leader front",
+      "description": "leader technique front, responsable du développement d'un design system transverse. projets: loanscape (refonte back-office prêts avec angular 15), pure pixel (design system multi-technologies). encadrement d'équipes en france et singapour, gestion du backlog produit et animation des rituels agiles.",
+      "location": "PARIS, FRANCE"
+    },
+    {
+      "company": "Société Générale",
+      "period": "2018 - 2020",
+      "position": "développeur front end",
+      "description": "développeur front-end responsable de la maintenance d'une application de mise en relation client/conseiller et du développement d'un chatbot. projets: interact (relation client/conseiller avec backbone.js), chatbot (outil conversationnel en react.js).",
+      "location": "PARIS, FRANCE"
+    }
+  ],
+  "scholarship": [
+    {
+      "institution": "IPSSI",
+      "period": "2016 - 2019",
+      "degree": "master en informatique",
+      "description": "formation approfondie en architecture logicielle, développement d'applications et gestion de projets informatiques.",
+      "location": "PARIS, FRANCE"
+    },
+    {
+      "institution": "CERFAL Campus Montsouris",
+      "period": "2014 - 2016",
+      "degree": "bts sio - services informatiques aux organisations",
+      "description": "formation technique en développement d'applications, administration de systèmes et gestion des infrastructures informatiques.",
+      "location": "PARIS, FRANCE"
+    }
+  ],
+  "projects": [
+    {
+      "title": "STORE API",
+      "description": "marketplace d'apis de données de référence pour autodistribution, incluant la conception d'apis rest, la gestion des releases et la gouvernance. solution centralisée permettant aux équipes de partager et consommer des données standardisées.",
+      "image": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop",
+      "technologies": ["NestJS", "MongoDB", "REST API"],
+      "stars": "Production",
+      "link": ""
+    },
+    {
+      "title": "Pure Pixel Design System",
+      "description": "développement d'un design system multi-technologies (angular, react, vue.js) pour les projets frontend du crédit agricole cib. pilotage de l'équipe de développement et animation des rituels agiles.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop",
+      "technologies": ["Angular", "React", "Vue", "TailwindCSS"],
+      "stars": "5 apps",
+      "link": ""
+    },
+    {
+      "title": "LYNX ERP",
+      "description": "erp référentiel multi-entités standardisant les référentiels via un erp central avec intégration store api. architecture modulaire permettant la gestion de données complexes multi-entités.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+      "technologies": ["React", "PostgreSQL", "NestJS"],
+      "stars": "Multi-entités",
+      "link": ""
+    }
+  ],
+  "skills": [
+    {
+      "id": "architecture-solution",
+      "title": "Architecture",
+      "description": "expertise en <strong>conception d'architectures applicatives</strong>, <strong>gouvernance d'api</strong> et <strong>urbanisation de systèmes</strong>. je conçois des solutions robustes, évolutives et alignées sur les enjeux métiers, de la définition de la cible jusqu'à la mise en production.",
+      "skills": ["Architecture", "API Design", "Microservices", "System Design", "MongoDB", "PostgreSQL"]
+    },
+    {
+      "id": "technical-leadership",
+      "title": "Management",
+      "description": "pilotage technique d'équipes de développement, encadrement en <strong>france et à l'international</strong>. animation des rituels agiles, gestion du backlog produit et accompagnement des équipes dans l'adoption des bonnes pratiques.",
+      "skills": ["Agile", "Scrum", "Kanban", "Team Management", "Mentoring", "Product Management"]
+    },
+    {
+      "id": "frontend-expertise",
+      "title": "Frontend",
+      "description": "maîtrise approfondie des <strong>frameworks modernes</strong> avec une expertise particulière en <strong>react, angular et vue.js</strong>. développement de design systems transverses et solutions micro front-end scalables.",
+      "skills": ["React", "Angular", "Vue", "TailwindCSS", "Design Systems", "TypeScript"]
+    },
+    {
+      "id": "backend-api",
+      "title": "Backend",
+      "description": "développement d'apis robustes et gouvernance technique. expertise en <strong>nest.js</strong> et architectures <strong>rest</strong>. gestion des releases, monitoring et optimisation des performances.",
+      "skills": ["NestJS", "Node.js", "REST API", "Express", "API Governance", "Backbone.js"]
+    }
+  ],
+  "navigation": [
+    { "id": "hero", "label": "Accueil", "section": "hero" },
+    { "id": "about", "label": "Profil", "section": "about" },
+    { "id": "career", "label": "Parcours", "section": "career" },
+    { "id": "projects", "label": "Projets", "section": "projects" },
+    { "id": "skills", "label": "Expertise", "section": "skills" },
+    { "id": "contact", "label": "Contact", "section": "contact" }
+  ],
+  "form": {
+    "labels": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Number phone",
+      "message": "Message"
+    },
+    "placeholders": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@gmail.com",
+      "phone": "+33 6 12 34 56 78",
+      "message": "Bonjour Massinissa,\n\nJ'ai consulté votre profil et je serais intéressé par vos services pour un projet d'architecture logicielle. Pourriez-vous me contacter pour en discuter ?\n\nCordialement,\nJohn Doe"
+    },
+    "errors": {
+      "firstName": "First name is required",
+      "lastName": "Last name is required",
+      "email": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "message": "Message is required",
+      "general": "Missing either email or number phone.",
+      "submitFailed": "Failed to send message. Please try again."
+    },
+    "buttons": {
+      "submit": "Send mail",
+      "submitting": "Sending..."
+    },
+    "messages": {
+      "success": "Message sent successfully!",
+      "phoneOr": "OR"
+    }
+  },
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/massinissa-amalou",
+      "icon": "github",
+      "color": "hover:text-gray-800 dark:hover:text-gray-300"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/massinissa-amalou",
+      "icon": "linkedin",
+      "color": "hover:text-blue-600 dark:hover:text-blue-400"
+    },
+    {
+      "name": "X",
+      "url": "https://x.com/massinissa_amalou",
+      "icon": "x",
+      "color": "hover:text-black dark:hover:text-white"
+    }
+  ],
+  "socialIcons": {
+    "x": "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+  },
+  "socialMessages": {
+    "description": "n'hésitez pas à me contacter pour discuter de vos projets, échanger sur l'architecture logicielle ou simplement faire connaissance."
+  },
+  "skillColors": {
+    "React": "bg-sky-100 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300 border border-sky-200 dark:border-sky-800",
+    "Angular": "bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-300 border border-red-200 dark:border-red-800",
+    "Vue": "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800",
+    "TailwindCSS": "bg-cyan-100 text-cyan-700 dark:bg-cyan-950/40 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800",
+    "TypeScript": "bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800",
+    "NestJS": "bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-300 border border-red-200 dark:border-red-800",
+    "Node.js": "bg-lime-100 text-lime-700 dark:bg-lime-950/40 dark:text-lime-300 border border-lime-200 dark:border-lime-800",
+    "Express": "bg-gray-100 text-gray-700 dark:bg-gray-800/40 dark:text-gray-300 border border-gray-200 dark:border-gray-600",
+    "MongoDB": "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300 border border-green-200 dark:border-green-800",
+    "PostgreSQL": "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800",
+    "REST API": "bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800",
+    "Architecture": "bg-slate-100 text-slate-700 dark:bg-slate-800/40 dark:text-slate-300 border border-slate-200 dark:border-slate-600",
+    "API Design": "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800",
+    "Microservices": "bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300 border border-violet-200 dark:border-violet-800",
+    "System Design": "bg-gray-100 text-gray-700 dark:bg-gray-800/40 dark:text-gray-300 border border-gray-200 dark:border-gray-600",
+    "Agile": "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300 border border-green-200 dark:border-green-800",
+    "Scrum": "bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800",
+    "Kanban": "bg-yellow-100 text-yellow-700 dark:bg-yellow-950/40 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-800",
+    "Team Management": "bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800",
+    "Mentoring": "bg-orange-100 text-orange-700 dark:bg-orange-950/40 dark:text-orange-300 border border-orange-200 dark:border-orange-800",
+    "Product Management": "bg-pink-100 text-pink-700 dark:bg-pink-950/40 dark:text-pink-300 border border-pink-200 dark:border-pink-800",
+    "Design Systems": "bg-cyan-100 text-cyan-700 dark:bg-cyan-950/40 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800",
+    "API Governance": "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800",
+    "Backbone.js": "bg-gray-100 text-gray-700 dark:bg-gray-800/40 dark:text-gray-300 border border-gray-200 dark:border-gray-600"
+  }
+}

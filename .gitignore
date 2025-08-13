@@ -1,0 +1,206 @@
+# =============================================================================
+# Comprehensive .gitignore for Astro + TypeScript + React Portfolio Project
+# =============================================================================
+
+# Build Output & Generated Files
+# --------------------------------
+dist/
+build/
+out/
+.output/
+.vercel/
+.netlify/
+.astro/
+.next/
+.nuxt/
+public/build/
+
+# Dependencies & Package Managers
+# --------------------------------
+node_modules/
+.pnp/
+.pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnpm-store/
+
+# Environment Variables & Configuration
+# ------------------------------------
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+.env.*.local
+.env.example
+
+# Logs & Debug Files
+# ------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+debug.log
+error.log
+
+# Runtime & Cache Files
+# ---------------------
+.cache/
+.parcel-cache/
+.turbo/
+.swc/
+.babel-cache/
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# TypeScript & JavaScript
+# ------------------------
+*.tsbuildinfo
+.tscache/
+coverage/
+lib-cov/
+nyc_output/
+.grunt/
+.lock-wscript
+
+# Testing
+# -------
+coverage/
+*.lcov
+.nyc_output/
+junit.xml
+test-results/
+playwright-report/
+test-results.xml
+
+# Editor & IDE Files
+# ------------------
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+.metadata/
+
+# Operating System Files
+# -----------------------
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Temporary Files
+# ---------------
+*.tmp
+*.temp
+.tmp/
+.temp/
+*.pid
+*.seed
+*.pid.lock
+
+# Archive Files
+# -------------
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Security & Sensitive Files
+# ---------------------------
+*.pem
+*.key
+*.p12
+*.p8
+*.cer
+*.crt
+*.der
+*.pfx
+.aws/
+.gcp/
+secrets/
+private/
+ssl/
+certificates/
+
+# Performance & Monitoring
+# -------------------------
+.lighthouse/
+.speedcurve/
+bundle-analyzer/
+.webpack-bundle-analyzer/
+
+# Deployment & CI/CD
+# -------------------
+.github/workflows/secrets/
+.travis.yml.bak
+.circleci/
+.gitlab-ci.yml.bak
+.dockerignore.bak
+Dockerfile.bak
+
+# Database & Local Data
+# ---------------------
+*.sqlite
+*.sqlite3
+*.db
+*.mdb
+.data/
+db.json
+
+# Backup Files
+# ------------
+*.bak
+*.backup
+*.old
+*.orig
+*_backup
+*_old
+
+# Custom Project Files
+# ---------------------
+# Add project-specific ignores here
+TODO.md
+NOTES.md
+.scratch/
+.experiments/
