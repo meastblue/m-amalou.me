@@ -55,10 +55,10 @@ const Navigation = () => {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="p-3">
+      <div className="p-2 px-3">
         <div className="flex justify-center">
           <div
-            className="flex items-center gap-1 rounded-full p-1 shadow-inner max-w-full overflow-hidden"
+            className="flex items-center gap-0.5 rounded-full p-1 shadow-inner w-full max-w-sm overflow-x-auto scrollbar-hide"
             style={{
               backgroundColor: 'var(--bg-surface)',
               opacity: 0.9
@@ -68,7 +68,7 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.section)}
-                className={`touch-target px-2 py-2 text-fluid-sm font-medium transition-all duration-[var(--duration-base)] rounded-full flex-shrink-0 whitespace-nowrap animate-mobile-scale ${
+                className={`touch-target px-2 py-1.5 text-xs sm:text-fluid-sm font-medium transition-all duration-[var(--duration-base)] rounded-full flex-shrink-0 whitespace-nowrap animate-mobile-scale ${
                   activeSection === item.section
                     ? 'shadow-sm border'
                     : 'hover:opacity-80'
