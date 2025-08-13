@@ -113,7 +113,7 @@ const Contact = () => {
       <div className="space-fluid-xl">
         <h2
           id="contact-heading"
-          className="text-fluid-2xl font-bold text-left lowercase pb-2"
+          className="text-fluid-2xl font-bold text-center lowercase pb-2"
           style={{ color: 'var(--text-primary)' }}
         >
           {sections.contact.title}

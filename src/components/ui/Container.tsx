@@ -27,7 +27,7 @@ const Container = ({
     full: 'max-w-none'    // Full width
   };
 
-  const baseClasses = 'w-full mx-auto px-4 sm:px-6 lg:px-8';
+  const baseClasses = 'w-full mx-auto px-6';
   const centerClasses = centerContent ? 'flex flex-col items-center' : '';
   
   return (

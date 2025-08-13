@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePortfolio } from '../../hooks/usePortfolio';
 
 const Navigation = () => {
@@ -10,8 +10,8 @@ const Navigation = () => {
   const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId);
     if (!element) return;
-    
-    element.scrollIntoView({ 
+
+    element.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
@@ -20,11 +20,11 @@ const Navigation = () => {
 
   const handleScroll = (): void => {
     const sections = navigation.map(item => item.section);
-    
+
     for (const section of sections) {
       const element = document.getElementById(section);
       if (!element) continue;
-      
+
       const rect = element.getBoundingClientRect();
       if (rect.top <= SCROLL_OFFSET && rect.bottom >= SCROLL_OFFSET) {
         setActiveSection(section);
@@ -37,7 +37,7 @@ const Navigation = () => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', handleScroll);
       handleScroll();
-      
+
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
@@ -45,7 +45,7 @@ const Navigation = () => {
   }, []);
 
   return (
-    <nav 
+    <nav
       className="mobile-nav fixed bottom-0 left-0 right-0 z-[var(--z-fixed)] backdrop-blur-lg shadow-lg border-t safe-bottom"
       style={{
         backgroundColor: 'var(--bg-elevated)',
@@ -57,7 +57,7 @@ const Navigation = () => {
     >
       <div className="p-3">
         <div className="flex justify-center">
-          <div 
+          <div
             className="flex items-center gap-1 rounded-full p-1 shadow-inner max-w-full overflow-hidden"
             style={{
               backgroundColor: 'var(--bg-surface)',
@@ -68,7 +68,7 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.section)}
-                className={`touch-target px-4 py-2 text-fluid-sm font-medium transition-all duration-[var(--duration-base)] rounded-full flex-shrink-0 whitespace-nowrap animate-mobile-scale ${
+                className={`touch-target px-2 py-2 text-fluid-sm font-medium transition-all duration-[var(--duration-base)] rounded-full flex-shrink-0 whitespace-nowrap animate-mobile-scale ${
                   activeSection === item.section
                     ? 'shadow-sm border'
                     : 'hover:opacity-80'

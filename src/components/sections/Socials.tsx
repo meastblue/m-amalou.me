@@ -1,4 +1,4 @@
-import { Github, Linkedin, ExternalLink } from 'lucide-react';
+import { ExternalLink, Github, Linkedin } from 'lucide-react';
 import { usePortfolio } from '../../hooks/usePortfolio';
 import Section from '../ui/Section';
 
@@ -21,11 +21,11 @@ const Socials = () => {
 
   return (
     <Section spacing="base" containerSize="lg">
-      <div className="space-fluid-lg">
+      <div className="space-fluid-lg pb-6">
         <div className="flex justify-center items-center gap-6 sm:gap-8">
           {socials.map((social) => {
             const IconComponent = getIconComponent(social.icon);
-            
+
             return (
               <a
                 key={social.name}
@@ -53,9 +53,9 @@ const Socials = () => {
             );
           })}
         </div>
-        
-        <p 
-          className="text-fluid-base leading-relaxed text-left max-w-2xl"
+
+        <p
+          className="text-fluid-base  leading-relaxed text-center max-w-2xl"
           style={{ color: 'var(--text-secondary)' }}
         >
           {socialMessages.description}

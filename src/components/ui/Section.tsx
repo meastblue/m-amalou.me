@@ -28,10 +28,10 @@ const Section = ({
 }: SectionProps) => {
   const spacingClasses = {
     none: '',
-    sm: 'py-8 sm:py-12',
-    base: 'py-12 sm:py-16 lg:py-20',
-    lg: 'py-16 sm:py-20 lg:py-24',
-    xl: 'py-20 sm:py-24 lg:py-32'
+    sm: 'pb-6',
+    base: 'pb-12',
+    lg: 'pb-16',
+    xl: 'pb-20'
   };
 
   const backgroundClasses = {
