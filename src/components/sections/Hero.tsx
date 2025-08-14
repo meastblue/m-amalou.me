@@ -8,12 +8,12 @@ const Hero = () => {
 
   return (
     <Section id="hero" spacing="lg" containerSize="xl" aria-labelledby="hero-heading">
-      <div className="min-h-screen flex flex-col justify-center pt-32 pb-20 lg:pt-20 lg:py-0">
+      <div className="min-h-screen flex flex-col justify-center pt-40 pb-20 lg:pt-24 lg:py-0">
         {/* Layout amélioré : Mobile vertical, Desktop équilibré */}
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 xl:gap-20 lg:items-center">
           
           {/* Contenu principal - Colonne gauche sur desktop */}
-          <div className="space-y-6 lg:space-y-8">
+          <div className="space-y-8 lg:space-y-10">
             <div>
               <p className="text-sm lg:text-base xl:text-lg font-mono mb-4 lg:mb-6" style={{ color: 'var(--color-accent)' }}>
                 {t.personal.greeting}
@@ -26,7 +26,7 @@ const Hero = () => {
               </h2>
 
               {/* Icônes sociales - Mobile et Tablet uniquement */}
-              <div className="flex gap-[var(--space-sm)] mt-[var(--space-lg)] lg:hidden">
+              <div className="flex gap-[var(--space-sm)] mt-[var(--space-xl)] lg:hidden">
                 {t.socials.map((social) => (
                   <a
                     key={social.name}
@@ -61,7 +61,7 @@ const Hero = () => {
               {t.sections.hero.content}
             </p>
 
-            <div className="flex flex-col gap-4 pt-4 lg:pt-6">
+            <div className="flex flex-col gap-6 pt-6 lg:pt-6">
               <a href="#contact"
                  className="inline-flex items-center justify-center px-8 py-4 border-2 rounded-lg transition-all duration-[var(--duration-base)] hover:scale-105 font-medium text-center"
                  style={{
