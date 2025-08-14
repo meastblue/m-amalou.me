@@ -35,7 +35,23 @@ const MainLayout = () => {
       // Calcul de la progression globale
       const globalProgress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
 
-      // Simulation de la progression par section (à ajuster selon les hauteurs réelles)
+      // Detection simple basée sur la position de scroll
+      let currentSection = sections[0].id;
+      
+      sections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Section active si elle est proche du haut de la fenêtre (dans les premiers 300px)
+          if (rect.top <= 300) {
+            currentSection = section.id;
+          }
+        }
+      });
+
+      setActiveSection(currentSection);
+
+      // Simulation de la progression par section (pour desktop)
       const sectionProgress: { [key: string]: number } = {};
       sections.forEach((section, index) => {
         const sectionStart = (index / sections.length);
@@ -44,7 +60,6 @@ const MainLayout = () => {
         if (globalProgress >= sectionStart && globalProgress <= sectionEnd) {
           const localProgress = (globalProgress - sectionStart) / (sectionEnd - sectionStart);
           sectionProgress[section.id] = Math.min(localProgress * 100, 100);
-          setActiveSection(section.id);
         } else if (globalProgress > sectionEnd) {
           sectionProgress[section.id] = 100;
         } else {
@@ -57,9 +72,11 @@ const MainLayout = () => {
 
     if (contentRef.current) {
       contentRef.current.addEventListener('scroll', handleScroll);
+      // Appeler une fois au chargement
+      handleScroll();
       return () => contentRef.current?.removeEventListener('scroll', handleScroll);
     }
-  }, []);
+  }, [sections]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -181,59 +198,94 @@ const MainLayout = () => {
       </aside>
 
       {/* Navigation mobile */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 p-4" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <div className="flex justify-between items-center mb-4">
-          <div>
-            <h1 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>
-              Massinissa Amalou
-            </h1>
-            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-              fullstack web/mobile developer
-            </p>
+      <div className="lg:hidden">
+        {/* Header mobile fixe */}
+        <div className="fixed top-0 left-0 right-0 z-50 p-4 border-b" style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-color)' }}>
+          <div className="flex justify-between items-center gap-4">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-3xl font-bold leading-tight whitespace-nowrap" style={{ color: 'var(--text-primary)' }}>
+                Massinissa Amalou
+              </h1>
+              <p className="text-base" style={{ color: 'var(--text-secondary)' }}>
+                fullstack web/mobile developer
+              </p>
+            </div>
+            
+            {/* Theme toggle mobile */}
+            <button
+              onClick={toggleDarkMode}
+              className="relative w-14 h-7 rounded-full transition-all duration-300 border border-opacity-20 flex-shrink-0"
+              style={{ 
+                backgroundColor: isDarkMode ? 'var(--color-accent)' : 'var(--border-color)',
+                borderColor: 'var(--border-color)'
+              }}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {/* Sliding circle */}
+              <div 
+                className={`absolute top-0.5 w-6 h-6 rounded-full transition-all duration-300 flex items-center justify-center ${
+                  isDarkMode ? 'translate-x-7' : 'translate-x-0.5'
+                }`}
+                style={{ 
+                  backgroundColor: isDarkMode ? '#FFFFFF' : 'var(--bg-secondary)',
+                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+                }}
+              >
+                <div style={{ color: isDarkMode ? 'var(--color-accent)' : 'var(--text-tertiary)' }}>
+                  {isDarkMode ? <FaMoon size={10} /> : <FaSun size={10} />}
+                </div>
+              </div>
+            </button>
           </div>
         </div>
 
-        <nav className="flex gap-4 overflow-x-auto pb-2">
-          {sections.map((section) => (
-            <button
-              key={section.id}
-              onClick={() => setActiveSection(section.id)}
-              className={`whitespace-nowrap flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-300 ${
-                activeSection === section.id
-                  ? 'bg-[var(--color-accent-light)]'
-                  : 'hover:bg-[var(--bg-surface)]'
-              }`}
-            >
-              <span
-                className="font-mono text-xs"
-                style={{ color: 'var(--color-accent)' }}
-              >
-                {section.number}
-              </span>
-              <span
-                className="uppercase text-xs tracking-wider"
+        {/* Navigation mobile en bas */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 border-t backdrop-blur-lg" 
+             style={{ 
+               backgroundColor: 'var(--bg-primary)', 
+               borderColor: 'var(--border-color)',
+               boxShadow: '0 -4px 6px -1px rgba(0, 0, 0, 0.05)'
+             }}>
+          <nav className="flex justify-between items-center max-w-md mx-auto">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className={`relative px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 min-w-0 flex-1 mx-1 ${
+                  activeSection === section.id
+                    ? 'transform scale-105'
+                    : 'hover:scale-102 opacity-70 hover:opacity-90'
+                }`}
                 style={{
-                  color: activeSection === section.id
-                    ? 'var(--color-accent)'
+                  backgroundColor: activeSection === section.id 
+                    ? 'var(--color-accent)' 
+                    : 'transparent',
+                  color: activeSection === section.id 
+                    ? 'white' 
                     : 'var(--text-secondary)',
-                  fontWeight: activeSection === section.id ? '600' : '400'
+                  boxShadow: activeSection === section.id 
+                    ? '0 4px 14px 0 rgba(0, 121, 255, 0.25)' 
+                    : 'none'
                 }}
               >
-                {section.label}
-              </span>
-            </button>
-          ))}
-        </nav>
+                <span className="relative z-10 truncate">
+                  {section.label}
+                </span>
+              </button>
+            ))}
+          </nav>
+        </div>
+
       </div>
 
       {/* Landing page scrollable - Partie droite */}
       <main
         ref={contentRef}
-        className="w-full lg:w-1/2 lg:ml-[50%] p-4 lg:p-8 pt-32 lg:pt-8 lg:h-screen lg:overflow-y-auto"
+        className="w-full lg:w-1/2 lg:ml-[50%] p-4 lg:p-8 pt-24 pb-20 lg:pt-8 lg:pb-8 lg:h-screen lg:overflow-y-auto"
       >
         <div className="max-w-2xl mx-auto">
           {/* Texte d'introduction */}
-          <div className="mb-12 pt-32">
+          <div className="mb-12 pt-6 lg:pt-32">
             <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. integer id nisl et erat varius mollis. aliquam vehicula ex sed purus consectetur.
             </p>
@@ -287,7 +339,7 @@ const MainLayout = () => {
                         type="text"
                         placeholder="Andrew"
                         required
-                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20"
+                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 placeholder:text-[var(--text-tertiary)]"
                         style={{
                           backgroundColor: 'var(--bg-elevated)',
                           borderColor: 'var(--border-color)',
@@ -304,7 +356,7 @@ const MainLayout = () => {
                         type="text"
                         placeholder="John"
                         required
-                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20"
+                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 placeholder:text-[var(--text-tertiary)]"
                         style={{
                           backgroundColor: 'var(--bg-elevated)',
                           borderColor: 'var(--border-color)',
@@ -322,7 +374,7 @@ const MainLayout = () => {
                       <input
                         type="email"
                         placeholder="john@gmail.com"
-                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20"
+                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 placeholder:text-[var(--text-tertiary)]"
                         style={{
                           backgroundColor: 'var(--bg-elevated)',
                           borderColor: 'var(--border-color)',
@@ -338,7 +390,7 @@ const MainLayout = () => {
                       <input
                         type="tel"
                         placeholder="+33 456 78 91 23"
-                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20"
+                        className="w-full px-4 py-3 rounded-lg border text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 placeholder:text-[var(--text-tertiary)]"
                         style={{
                           backgroundColor: 'var(--bg-elevated)',
                           borderColor: 'var(--border-color)',
@@ -360,7 +412,7 @@ const MainLayout = () => {
 Phasellus ac diam risus. Aenean volutpat lacinia purus nec fougiat. Praesent eu vestibulum nulla. Quisque semper molestie lectus. Quisque non pum turpis sem. Nam aliquam tellus a elit. Nulla facilisi. Fusce eget venenatis nunc. Ut et ex ut mi varius sodales ut urna ante. Phasellus placerat, felis eget consectetur gravida, tortor turpis Iacilla tellus sed aliquam sem diam et dui. Donec vestibulum odio eget massa pulvinar, eu tempus turpis facilisis. Suspendisse erat est, porta vel eros ut, varius semper sem. Curabitur sed metus sed mauris molestie pharetra.
 
 Integer ac ipsum eget nibh molestie condimentum. Integer imperdiet, arcu sed imperdiet fringilla, risus eros maximus dui, at fougiat urna libero lorem. Suspendisse et condimentum dolor. Phasellus vulputate sed ut amet congue porta. Donec non consequat velit. Etiam interdum risus vitae porta semper, est metus iaculis augue, monere a."
-                      className="w-full px-4 py-3 rounded-lg border text-sm font-semibold leading-relaxed transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 resize-none"
+                      className="w-full px-4 py-3 rounded-lg border text-sm font-semibold leading-relaxed transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 resize-none placeholder:text-[var(--text-tertiary)]"
                       style={{
                         backgroundColor: 'var(--bg-elevated)',
                         borderColor: 'var(--border-color)',
@@ -388,6 +440,33 @@ Integer ac ipsum eget nibh molestie condimentum. Integer imperdiet, arcu sed imp
                 </form>
             </div>
           </section>
+
+          {/* Icônes sociales mobiles après le formulaire */}
+          <div className="lg:hidden pt-8" style={{ paddingTop: '32px', paddingBottom: '24px' }}>
+            <div className="flex justify-center gap-4">
+              {t.socials.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
+                  style={{ 
+                    backgroundColor: 'var(--bg-surface)',
+                    color: 'var(--text-tertiary)',
+                    border: '1px solid var(--border-color)'
+                  }}
+                  onTouchStart={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
+                  onTouchEnd={(e) => e.currentTarget.style.color = 'var(--text-tertiary)'}
+                >
+                  {social.icon === 'github' && <FaGithub size={16} />}
+                  {social.icon === 'linkedin' && <FaLinkedin size={16} />}
+                  {social.icon === 'x' && <FaBluesky size={16} />}
+                  {social.icon === 'medium' && <FaMedium size={16} />}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </main>
     </div>
