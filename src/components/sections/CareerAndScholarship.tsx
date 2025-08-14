@@ -31,70 +31,42 @@ const CareerAndScholarship = () => {
     <div className="w-full">
       <div className="space-y-8">
         <div className="pb-2">
-          <div className="flex items-baseline gap-[var(--space-lg)]">
+          <div className="flex items-baseline gap-4">
             <h2 className="flex items-center gap-3">
-              <span className="font-mono text-lg opacity-80" style={{ color: 'var(--color-accent)' }}>02.</span>
+              <span className="font-mono text-lg opacity-80 text-[var(--color-accent)]">{t.numbers['02']}</span>
               <button
-              id={activeTab === 'career' ? 'career-heading' : undefined}
-              className="text-2xl font-semibold lowercase transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-              style={{
-                color: activeTab === 'career' ? 'var(--text-primary)' : 'var(--text-secondary)',
-                '--tw-ring-color': 'var(--color-accent)'
-              } as React.CSSProperties}
-              onMouseEnter={(e) => {
-                if (activeTab !== 'career') {
-                  e.currentTarget.style.color = 'var(--text-primary)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeTab !== 'career') {
-                  e.currentTarget.style.color = 'var(--text-secondary)';
-                }
-              }}
-              onClick={() => setActiveTab('career')}
-              aria-pressed={activeTab === 'career'}
-              aria-label={`Switch to ${t.sections.career.title} section`}
-            >
-              {t.sections.career.title}
-            </button>
-            <span className="text-xl opacity-50" style={{ color: 'var(--text-tertiary)' }}>/</span>
-            <button
-              id={activeTab === 'scholarship' ? 'career-heading' : undefined}
-              className="text-2xl font-semibold lowercase transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-              style={{
-                color: activeTab === 'scholarship' ? 'var(--text-primary)' : 'var(--text-secondary)',
-                '--tw-ring-color': 'var(--color-accent)'
-              } as React.CSSProperties}
-              onMouseEnter={(e) => {
-                if (activeTab !== 'scholarship') {
-                  e.currentTarget.style.color = 'var(--text-primary)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeTab !== 'scholarship') {
-                  e.currentTarget.style.color = 'var(--text-secondary)';
-                }
-              }}
-              onClick={() => setActiveTab('scholarship')}
-              aria-pressed={activeTab === 'scholarship'}
-              aria-label={`Switch to ${t.sections.scholarship.title} section`}
-            >
-              {t.sections.scholarship.title}
-            </button>
+                id={activeTab === 'career' ? 'career-heading' : undefined}
+                className={`text-2xl font-semibold lowercase transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-[var(--color-accent)] ${
+                  activeTab === 'career' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                }`}
+                onClick={() => setActiveTab('career')}
+                aria-pressed={activeTab === 'career'}
+                aria-label={t.accessibility.navigate_to.replace('{{section}}', t.sections.career.title)}
+              >
+                {t.sections.career.title}
+              </button>
+              <span className="text-xl opacity-50 text-[var(--text-tertiary)]">/</span>
+              <button
+                id={activeTab === 'scholarship' ? 'career-heading' : undefined}
+                className={`text-2xl font-semibold lowercase transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-[var(--color-accent)] ${
+                  activeTab === 'scholarship' ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                }`}
+                onClick={() => setActiveTab('scholarship')}
+                aria-pressed={activeTab === 'scholarship'}
+                aria-label={t.accessibility.navigate_to.replace('{{section}}', t.sections.scholarship.title)}
+              >
+                {t.sections.scholarship.title}
+              </button>
             </h2>
           </div>
         </div>
 
-        <div className="space-y-[var(--space-xl)]">
+        <div className="space-y-8">
           {items.map((item, index) => (
             <article key={`${activeTab}-${index}`} className="flex gap-6">
               <div className="flex items-start pt-2">
                 <div
-                  className="w-12 h-12 bg-transparent border-2 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 flex-shrink-0"
-                  style={{
-                    borderColor: 'var(--color-accent)',
-                    color: 'var(--color-accent)'
-                  }}
+                  className="w-12 h-12 bg-transparent border-2 border-[var(--color-accent)] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 flex-shrink-0 text-[var(--color-accent)]"
                   role="img"
                   aria-label={activeTab === 'career' ? t.accessibility.career_experience : t.accessibility.education_experience}
                 >
@@ -106,51 +78,32 @@ const CareerAndScholarship = () => {
                 </div>
               </div>
 
-              <div className="flex-1 min-w-0 space-y-[var(--space-base)]">
-                <header className="space-y-[var(--space-xs)]">
-                  <h3
-                    className="text-fluid-xl font-bold"
-                    style={{ color: 'var(--text-primary)' }}
-                  >
+              <div className="flex-1 min-w-0 space-y-4">
+                <header className="space-y-1">
+                  <h3 className="text-fluid-xl font-bold text-[var(--text-primary)]">
                     {activeTab === 'career'
                       ? (item as CareerItem).company
                       : (item as ScholarshipItem).institution}
                   </h3>
-                  <time
-                    className="text-fluid-base font-medium"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
+                  <time className="text-fluid-base font-medium text-[var(--text-secondary)]">
                     {item.period}
                   </time>
                 </header>
 
-                <h4
-                  className="text-fluid-base font-semibold"
-                  style={{ color: 'var(--text-secondary)', opacity: 0.8 }}
-                >
+                <h4 className="text-fluid-base font-semibold text-[var(--text-secondary)] opacity-80">
                   {activeTab === 'career'
                     ? (item as CareerItem).position
                     : (item as ScholarshipItem).degree}
                 </h4>
 
-                <p
-                  className="text-fluid-base font-medium leading-relaxed"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    opacity: 0.8
-                  }}
-                >
+                <p className="text-fluid-base font-medium leading-relaxed text-[var(--text-secondary)] opacity-80">
                   {item.description}
                 </p>
 
-                <div
-                  className="flex items-center text-fluid-sm"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
+                <div className="flex items-center text-fluid-sm text-[var(--text-secondary)]">
                   <MdPlace
                     size={16}
-                    className="mr-2 flex-shrink-0"
-                    style={{ color: 'var(--color-accent)' }}
+                    className="mr-2 flex-shrink-0 text-[var(--color-accent)]"
                     aria-hidden="true"
                   />
                   <span>{item.location}</span>

@@ -3,10 +3,8 @@ import type { ReactNode } from 'react';
 import frTranslations from '../data/i18n/fr.json';
 import enTranslations from '../data/i18n/en.json';
 
-// Language types
 export type Language = 'fr' | 'en';
 
-// Translation data type
 export interface TranslationData {
   personal: {
     name: string;
@@ -157,21 +155,48 @@ export interface TranslationData {
     description: string;
     keywords: string;
   };
+  ui: {
+    skip_to_content: string;
+    fullstack_developer: string;
+    send_mail: string;
+    get_in_touch: string;
+    required: string;
+    view_project: string;
+    downloads: string;
+    installs: string;
+  };
+  layout: {
+    name: string;
+    loading_translations: string;
+  };
+  about: {
+    content: string;
+    hero_content: string;
+  };
+  sections_labels: {
+    about: string;
+    career: string;
+    work: string;
+    skills: string;
+  };
+  numbers: {
+    '01': string;
+    '02': string;
+    '03': string;
+    '04': string;
+    '05': string;
+  };
 }
 
-// I18n Context type
 interface I18nContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: TranslationData;
-  // Utility function for interpolation
   translate: (key: string, params?: Record<string, string>) => string;
 }
 
-// Create context
 const I18nContext = createContext<I18nContextType | null>(null);
 
-// I18n Provider component
 interface I18nProviderProps {
   children: ReactNode;
   defaultLanguage?: Language;
@@ -181,23 +206,19 @@ export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderP
   const [language, setLanguage] = useState<Language>(defaultLanguage);
   const [translations, setTranslations] = useState<TranslationData | null>(null);
 
-  // Initialize translations immediately
   useEffect(() => {
     const currentTranslations = language === 'fr' ? frTranslations : enTranslations;
     setTranslations(currentTranslations);
   }, [language]);
 
-  // Initialize with default translations on mount
   useEffect(() => {
     if (!translations) {
       setTranslations(frTranslations);
     }
   }, [translations]);
 
-  // Persist language preference
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Load saved language preference
       const savedLanguage = localStorage.getItem('portfolio-language') as Language;
       if (savedLanguage && savedLanguage !== language) {
         setLanguage(savedLanguage);
@@ -208,16 +229,13 @@ export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderP
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('portfolio-language', language);
-      // Update document language attribute
       document.documentElement.lang = language;
     }
   }, [language]);
 
-  // Interpolation function for dynamic content
   const translate = (key: string, params?: Record<string, string>): string => {
     if (!translations) return key;
     
-    // Navigate through nested object keys
     const keys = key.split('.');
     let value: any = translations;
     
@@ -225,7 +243,7 @@ export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderP
       if (value && typeof value === 'object' && k in value) {
         value = value[k];
       } else {
-        return key; // Return key if path not found
+        return key;
       }
     }
     
@@ -233,7 +251,6 @@ export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderP
       return key;
     }
 
-    // Replace interpolation patterns
     let result = value;
     if (params) {
       Object.entries(params).forEach(([param, replacement]) => {
@@ -246,12 +263,7 @@ export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderP
 
   if (!translations) {
     return (
-      <div style={{ 
-        padding: '2rem', 
-        textAlign: 'center', 
-        fontSize: '1.2rem',
-        color: '#0079FF'
-      }}>
+      <div className="p-8 text-center text-xl text-[#0079FF]">
         🌍 Loading translations...
       </div>
     );
@@ -269,7 +281,6 @@ export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderP
   );
 };
 
-// Hook to use I18n context
 export const useI18n = (): I18nContextType => {
   const context = useContext(I18nContext);
   if (!context) {
@@ -278,7 +289,6 @@ export const useI18n = (): I18nContextType => {
   return context;
 };
 
-// Navigation items with i18n
 export const useI18nNavigation = () => {
   const { t } = useI18n();
   

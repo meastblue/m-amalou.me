@@ -1,5 +1,5 @@
 import { I18nProvider } from '../hooks/useI18n';
-import MainLayout from './Layout/MainLayout';
+import MainLayout from './layouts/MainLayout';
 
 export default function App() {
   return (

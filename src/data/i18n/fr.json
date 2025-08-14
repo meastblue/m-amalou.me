@@ -138,19 +138,50 @@
       "skills": ["NestJS", "Node.js", "REST API", "Express", "API Governance", "Backbone.js"]
     }
   ],
+  "ui": {
+    "skip_to_content": "Aller au contenu principal",
+    "fullstack_developer": "fullstack web/mobile developer",
+    "send_mail": "Send mail",
+    "get_in_touch": "get in touch with me",
+    "required": "*",
+    "view_project": "View project",
+    "downloads": "downloads",
+    "installs": "installs"
+  },
+  "layout": {
+    "name": "Massinissa Amalou",
+    "loading_translations": "🌍 Loading translations..."
+  },
+  "about": {
+    "content": "Architecte logiciel senior avec 6+ années d'expérience, je suis spécialisé en pilotage technique, gouvernance d'API REST et urbanisation de systèmes d'information complexes. Ma méthodologie couvre l'intégralité du cycle projet : définition d'architecture cible, développement fullstack (React.js, Angular, Vue.js, NestJS), mise en production et monitoring. Expert en conception d'architectures applicatives cloud-native et microservices, je garantis la robustesse, la scalabilité et la performance des solutions. Mes interventions chez Autodistribution, Crédit Agricole CIB et Société Générale démontrent ma capacité à piloter des transformations digitales d'envergure.",
+    "hero_content": "Massinissa Amalou, architecte logiciel & solution basé à Paris. Expert en conception d'architectures robustes et évolutives, j'accompagne les équipes dans leurs projets stratégiques de transformation digitale et d'urbanisation de systèmes d'information."
+  },
+  "sections_labels": {
+    "about": "about",
+    "career": "Experience", 
+    "work": "Work",
+    "skills": "Skills"
+  },
+  "numbers": {
+    "01": "01.",
+    "02": "02.",
+    "03": "03.",
+    "04": "04.",
+    "05": "05."
+  },
   "form": {
     "labels": {
-      "firstName": "Prénom",
-      "lastName": "Nom",
+      "firstName": "First name",
+      "lastName": "Last name",
       "email": "Email",
-      "phone": "Téléphone",
+      "phone": "Number phone",
       "message": "Message"
     },
     "placeholders": {
-      "firstName": "Jean",
-      "lastName": "Dupont",
-      "email": "jean.dupont@gmail.com",
-      "phone": "+33 6 12 34 56 78",
+      "firstName": "Andrew",
+      "lastName": "John",
+      "email": "john@gmail.com",
+      "phone": "+33 456 78 91 23",
       "message": "Bonjour Massinissa,\\n\\nJ'ai consulté votre profil et je serais intéressé par vos services pour un projet d'architecture logicielle. Pourriez-vous me contacter pour en discuter ?\\n\\nCordialement,\\nJean Dupont"
     },
     "errors": {
@@ -163,8 +194,8 @@
       "submitFailed": "Échec de l'envoi. Veuillez réessayer."
     },
     "buttons": {
-      "submit": "Envoyer",
-      "submitting": "Envoi en cours..."
+      "submit": "Send mail",
+      "submitting": "Sending..."
     },
     "messages": {
       "success": "Message envoyé avec succès !",

@@ -5,9 +5,7 @@ import Pill from '../ui/Pill';
 const Skills = () => {
   const { t } = useI18n();
 
-  // Mapping des couleurs des technologies
   const techColors: { [key: string]: string } = {
-    // Frontend
     'React': '61DAFB',
     'Vue.js': '4FC08D', 
     'Angular': 'DD0031',
@@ -18,8 +16,6 @@ const Skills = () => {
     'Sass': 'CC6699',
     'Tailwind CSS': '06B6D4',
     'Bootstrap': '7952B3',
-    
-    // Backend
     'Node.js': '339933',
     'Express': '000000',
     'Python': '3776AB',
@@ -31,15 +27,11 @@ const Skills = () => {
     'Spring': '6DB33F',
     'C#': '239120',
     '.NET': '512BD4',
-    
-    // Databases
     'MongoDB': '47A248',
     'PostgreSQL': '336791',
     'MySQL': '4479A1',
     'Redis': 'DC382D',
     'Firebase': 'FFCA28',
-    
-    // DevOps & Tools
     'Docker': '2496ED',
     'AWS': 'FF9900',
     'Azure': '0078D4',
@@ -49,16 +41,12 @@ const Skills = () => {
     'GitLab': 'FCA326',
     'Jenkins': 'D24939',
     'Kubernetes': '326CE5',
-    
-    // Mobile
     'React Native': '61DAFB',
     'Flutter': '02569B',
     'Swift': 'FA7343',
     'Kotlin': '7F52FF',
     'Android': '3DDC84',
     'iOS': '000000',
-    
-    // Others
     'GraphQL': 'E10098',
     'REST API': '25D366',
     'Webpack': '8DD6F9',
@@ -79,47 +67,33 @@ const Skills = () => {
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3" style={{ color: 'var(--text-primary)' }}>
-        <span className="font-mono text-lg opacity-80" style={{ color: 'var(--color-accent)' }}>05.</span>
-        <span className="lowercase">skills</span>
+      <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3 text-[var(--text-primary)]">
+        <span className="font-mono text-lg opacity-80 text-[var(--color-accent)]">{t.numbers['04']}</span>
+        <span className="lowercase">{t.sections_labels.skills}</span>
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {t.skills.map((skill) => (
           <article
             key={skill.id}
-            className="group rounded-lg p-6 transition-all duration-300 hover:shadow-lg"
-            style={{ 
-              backgroundColor: 'var(--bg-surface)',
-              border: '1px solid var(--border-color)'
-            }}
+            className="group rounded-lg p-6 transition-all duration-300 hover:shadow-lg bg-[var(--bg-surface)] border border-[var(--border-color)]"
           >
-            {/* Header with icon and title */}
             <div className="flex items-start gap-4 mb-4">
-              <div 
-                className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                style={{ 
-                  backgroundColor: 'var(--color-accent-light)',
-                  color: 'var(--color-accent)'
-                }}
-              >
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 bg-[var(--color-accent-light)] text-[var(--color-accent)]">
                 {getIconForSkill(skill.id)}
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>
+                <h3 className="text-lg font-semibold mb-1 text-[var(--text-primary)]">
                   {skill.title}
                 </h3>
               </div>
             </div>
 
-            {/* Description */}
             <p 
-              className="text-sm leading-relaxed mb-4" 
-              style={{ color: 'var(--text-secondary)' }}
+              className="text-sm leading-relaxed mb-4 text-[var(--text-secondary)]"
               dangerouslySetInnerHTML={{ __html: skill.description }}
             />
 
-            {/* Skills tags */}
             <div className="flex flex-wrap gap-2">
               {skill.skills.map((tech) => (
                 <Pill
