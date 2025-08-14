@@ -22,7 +22,7 @@ const MobileNavigation = ({ sections, activeSection, onSectionClick }: MobileNav
                 : 'hover:scale-102 opacity-70 hover:opacity-90 text-[var(--text-secondary)]'
             }`}
           >
-            <span className="relative z-10 truncate">
+            <span className="relative z-10 truncate text-center lowercase">
               {section.label}
             </span>
           </button>

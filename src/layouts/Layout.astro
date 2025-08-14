@@ -3,7 +3,7 @@ import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="fr" class="dark">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -111,11 +111,11 @@ import "../styles/global.css";
     </script>
     
     <script is:inline>
-      if (!localStorage.getItem('portfolio-theme')) {
-        localStorage.setItem('portfolio-theme', 'dark');
-        document.documentElement.classList.add('dark');
+      if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', 'light');
+        document.documentElement.classList.remove('dark');
       } else {
-        const theme = localStorage.getItem('portfolio-theme');
+        const theme = localStorage.getItem('theme');
         if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');
         } else {

@@ -10,7 +10,7 @@ import SocialLinks from '../ui/SocialLinks';
 import CursorHalo from '../effects/CursorHalo';
 import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
-import LanguageSelector from "../ui/LanguageSelector";
+import LanguageSelector from '../ui/LanguageSelector';
 
 const MainLayout = () => {
   const { t } = useI18n();
@@ -83,7 +83,6 @@ const MainLayout = () => {
 
   return (
     <div className="min-h-screen flex bg-[var(--bg-primary)] relative overflow-hidden">
-      {/* Cursor halo effect */}
       <CursorHalo />
 
       <Sidebar

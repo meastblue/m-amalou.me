@@ -7,7 +7,7 @@ interface PillProps {
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
-  customColor?: string; // Hex color like "61DAFB"
+  customColor?: string;
   style?: React.CSSProperties;
 }
 
@@ -51,12 +51,11 @@ const Pill = ({
     custom: {}
   };
 
-  // Custom color styling with 20% opacity background and solid text
   const getCustomStyle = () => {
     if (variant === 'custom' && customColor) {
       const cleanColor = customColor.replace('#', '');
       return {
-        backgroundColor: `#${cleanColor}33`, // 33 is 20% opacity in hex
+        backgroundColor: `#${cleanColor}33`,
         color: `#${cleanColor}`,
         border: 'none'
       };

@@ -8,7 +8,6 @@ const CursorHalo = () => {
   const { isDarkMode } = useDarkMode();
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    // Throttle updates for better performance
     requestAnimationFrame(() => {
       setMousePosition({
         x: e.clientX,
@@ -23,7 +22,6 @@ const CursorHalo = () => {
   }, []);
 
   useEffect(() => {
-    // Only enable on desktop (non-touch devices)
     const isDesktop = !('ontouchstart' in window) && window.innerWidth > 1024;
     
     if (!isDesktop) {
@@ -41,7 +39,6 @@ const CursorHalo = () => {
 
   return (
     <>
-      {/* Main halo effect */}
       <motion.div
         className="fixed pointer-events-none z-[1] mix-blend-screen"
         style={{
@@ -73,7 +70,6 @@ const CursorHalo = () => {
         }}
       />
 
-      {/* Secondary subtle glow */}
       <motion.div
         className="fixed pointer-events-none z-[0] mix-blend-soft-light"
         style={{

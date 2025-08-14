@@ -1,17 +1,51 @@
-import { useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 
-export const useDarkMode = () => {
+interface DarkModeContextType {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+}
+
+const DarkModeContext = createContext<DarkModeContextType | null>(null);
+
+interface DarkModeProviderProps {
+  children: ReactNode;
+}
+
+export const DarkModeProvider = ({ children }: DarkModeProviderProps) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or default to 'light' mode
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const hasDocumentDarkClass = document.documentElement.classList.contains('dark');
     
     if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
+      const shouldBeDark = savedTheme === 'dark';
+      setIsDarkMode(shouldBeDark);
+    } else if (hasDocumentDarkClass) {
+      setIsDarkMode(true);
+      localStorage.setItem('theme', 'dark');
     } else {
-      setIsDarkMode(prefersDark);
+      setIsDarkMode(false);
+      localStorage.setItem('theme', 'light');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem('portfolio-theme')) {
+      localStorage.removeItem('portfolio-theme');
+    }
+    if (localStorage.getItem('portfolio-language')) {
+      localStorage.removeItem('portfolio-language');
+    }
+    
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      const shouldBeDark = savedTheme === 'dark';
+      if (isDarkMode !== shouldBeDark) {
+        setIsDarkMode(shouldBeDark);
+      }
     }
   }, []);
 
@@ -31,5 +65,17 @@ export const useDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  return { isDarkMode, toggleDarkMode };
+  return (
+    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+      {children}
+    </DarkModeContext.Provider>
+  );
+};
+
+export const useDarkMode = (): DarkModeContextType => {
+  const context = useContext(DarkModeContext);
+  if (!context) {
+    throw new Error('useDarkMode must be used within DarkModeProvider');
+  }
+  return context;
 };

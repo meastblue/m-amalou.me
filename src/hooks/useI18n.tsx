@@ -213,16 +213,19 @@ export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderP
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedLanguage = localStorage.getItem('portfolio-language') as Language;
+      const savedLanguage = localStorage.getItem('language') as Language;
       if (savedLanguage && savedLanguage !== language) {
         setLanguage(savedLanguage);
+      } else if (!savedLanguage) {
+        setLanguage('fr');
+        localStorage.setItem('language', 'fr');
       }
     }
   }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('portfolio-language', language);
+      localStorage.setItem('language', language);
       document.documentElement.lang = language;
     }
   }, [language]);

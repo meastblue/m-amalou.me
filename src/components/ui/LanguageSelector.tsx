@@ -37,14 +37,12 @@ const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorP
   if (variant === 'toggle') {
     return (
       <div className="relative flex items-center">
-        {/* Toggle Switch Style */}
         <button
           onClick={() => setLanguage(otherLanguage.code)}
           className={`${config.toggle} relative rounded-full border border-[var(--border-color)] bg-[var(--border-color)] transition-all duration-300 focus:outline-none group select-none touch-manipulation`}
           aria-label={`Switch to ${otherLanguage.label}`}
           title={`Switch to ${otherLanguage.label}`}
         >
-          {/* Current language indicator */}
           <div
             className={`absolute ${size === 'lg' ? 'top-0.5 w-6 h-6' : 'top-0.5 w-5 h-5'} rounded-full flex items-center justify-center transition-all duration-300 ${size === 'lg' ? 'shadow-md' : 'shadow-sm'} ${
               language === 'fr' ? `left-0.5 bg-white` : `right-0.5 bg-[var(--bg-secondary)]`
@@ -56,7 +54,6 @@ const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorP
           </div>
         </button>
 
-        {/* Simple Tooltip */}
         <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[var(--bg-surface)] text-[var(--text-primary)] text-xs px-2 py-1 rounded border border-[var(--border-color)] shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
           {otherLanguage.flag} {otherLanguage.label}
         </div>
@@ -64,7 +61,6 @@ const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorP
     );
   }
 
-  // Select variant for desktop
   if (variant === 'select') {
     return (
       <div className="relative w-full">
@@ -80,7 +76,6 @@ const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorP
             </option>
           ))}
         </select>
-        {/* Custom arrow */}
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
           <svg 
             className="w-4 h-4 text-[var(--text-tertiary)]" 
@@ -95,7 +90,6 @@ const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorP
     );
   }
 
-  // Dropdown variant (fallback/alternative)
   return (
     <div className="relative">
       <button
@@ -118,13 +112,11 @@ const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorP
       
       {isOpen && (
         <>
-          {/* Backdrop */}
           <div 
             className="fixed inset-0 z-40" 
             onClick={() => setIsOpen(false)}
           />
           
-          {/* Dropdown */}
           <div className="absolute top-full mt-1 right-0 bg-[var(--bg-elevated)] border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden z-50 min-w-full">
             {languages.map((lang) => (
               <button
