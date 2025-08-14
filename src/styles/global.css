@@ -154,6 +154,41 @@
     font-family: 'Sharp Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
   
+  /* Custom text-dark class */
+  .text-dark {
+    color: #1D1D1B;
+  }
+  
+  /* Support for opacity modifiers with text-dark */
+  .text-dark\/50 {
+    color: rgb(29 29 27 / 0.5);
+  }
+  
+  .text-dark\/30 {
+    color: rgb(29 29 27 / 0.3);
+  }
+  
+  .text-dark\/70 {
+    color: rgb(29 29 27 / 0.7);
+  }
+  
+  /* Dark mode overrides for white text with opacity */
+  .dark .dark\:text-white {
+    color: #ffffff;
+  }
+  
+  .dark .dark\:text-white\/50 {
+    color: rgb(255 255 255 / 0.5);
+  }
+  
+  .dark .dark\:text-white\/30 {
+    color: rgb(255 255 255 / 0.3);
+  }
+  
+  .dark .dark\:text-white\/70 {
+    color: rgb(255 255 255 / 0.7);
+  }
+  
   /* Fade in up animation for skill pills */
   .animate-fadeInUp {
     opacity: 0;

@@ -19,15 +19,15 @@ const About = () => {
 
   const highlightText = (text: string) => {
     let highlightedText = text;
-    
+
     highlightKeywords.forEach((keyword, index) => {
       const regex = new RegExp(`(${keyword})`, 'gi');
       highlightedText = highlightedText.replace(
         regex,
-        `<span key="${index}" style="color: #1D1D1B; font-weight: 600;">$1</span>`
+        `<span key="${index}" class="text-dark dark:text-white font-semibold">$1</span>`
       );
     });
-    
+
     return highlightedText;
   };
 
@@ -36,16 +36,12 @@ const About = () => {
       <div className="space-fluid-lg">
         <h2
           id="about-heading"
-          className="text-fluid-2xl font-bold text-left lowercase pb-2"
-          style={{ color: 'var(--text-primary)' }}
+          className="text-fluid-2xl font-bold text-left lowercase pb-2 text-dark dark:text-white"
         >
           {sections.about.title}
         </h2>
         <p
-          className="text-fluid-base leading-relaxed text-left"
-          style={{ 
-            color: 'rgba(29, 29, 27, 0.3)'
-          }}
+          className="text-fluid-base leading-relaxed text-left text-dark/50 dark:text-white/50"
           dangerouslySetInnerHTML={{
             __html: highlightText(sections.about.content || '')
           }}
