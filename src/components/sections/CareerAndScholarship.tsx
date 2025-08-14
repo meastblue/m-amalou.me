@@ -1,7 +1,6 @@
 import { MdWork, MdSchool, MdPlace } from 'react-icons/md';
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../hooks/useI18n';
-import Section from '../ui/Section';
 
 export type CareerItem = {
   company: string;
@@ -29,17 +28,15 @@ const CareerAndScholarship = () => {
   );
 
   return (
-    <Section id="career" spacing="base" containerSize="lg" aria-labelledby="career-heading">
-      <div className="space-y-[var(--space-xl)]">
+    <div className="w-full">
+      <div className="space-y-8">
         <div className="pb-2">
-          <div className="flex items-center gap-4 mb-[var(--space-base)]">
-            <span className="font-mono text-lg lg:text-xl" style={{ color: 'var(--color-accent)' }}>02.</span>
-            <span className="hidden sm:block h-[1px] flex-1 max-w-xs" style={{ backgroundColor: 'var(--border-color)' }}></span>
-          </div>
           <div className="flex items-baseline gap-[var(--space-lg)]">
-            <button
+            <h2 className="flex items-center gap-3">
+              <span className="font-mono text-lg opacity-80" style={{ color: 'var(--color-accent)' }}>02.</span>
+              <button
               id={activeTab === 'career' ? 'career-heading' : undefined}
-              className="text-fluid-2xl font-bold lowercase transition-all duration-[var(--duration-base)] focus:outline-none animate-mobile-scale focus-visible:ring-2 focus-visible:ring-offset-2"
+              className="text-2xl font-semibold lowercase transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               style={{
                 color: activeTab === 'career' ? 'var(--text-primary)' : 'var(--text-secondary)',
                 '--tw-ring-color': 'var(--color-accent)'
@@ -60,10 +57,10 @@ const CareerAndScholarship = () => {
             >
               {t.sections.career.title}
             </button>
-            <span className="text-fluid-xl" style={{ color: 'var(--text-tertiary)' }}>/</span>
+            <span className="text-xl opacity-50" style={{ color: 'var(--text-tertiary)' }}>/</span>
             <button
               id={activeTab === 'scholarship' ? 'career-heading' : undefined}
-              className="text-fluid-2xl font-bold lowercase transition-all duration-[var(--duration-base)] focus:outline-none animate-mobile-scale focus-visible:ring-2 focus-visible:ring-offset-2"
+              className="text-2xl font-semibold lowercase transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               style={{
                 color: activeTab === 'scholarship' ? 'var(--text-primary)' : 'var(--text-secondary)',
                 '--tw-ring-color': 'var(--color-accent)'
@@ -84,15 +81,16 @@ const CareerAndScholarship = () => {
             >
               {t.sections.scholarship.title}
             </button>
+            </h2>
           </div>
         </div>
 
         <div className="space-y-[var(--space-xl)]">
           {items.map((item, index) => (
-            <article key={`${activeTab}-${index}`} className="flex gap-[var(--space-lg)] animate-mobile-scale">
+            <article key={`${activeTab}-${index}`} className="flex gap-6">
               <div className="flex items-start pt-2">
                 <div
-                  className="w-12 h-12 md:w-14 md:h-14 bg-transparent border-2 rounded-full flex items-center justify-center transition-all duration-[var(--duration-base)] hover:scale-110 flex-shrink-0"
+                  className="w-12 h-12 bg-transparent border-2 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 flex-shrink-0"
                   style={{
                     borderColor: 'var(--color-accent)',
                     color: 'var(--color-accent)'
@@ -162,7 +160,7 @@ const CareerAndScholarship = () => {
           ))}
         </div>
       </div>
-    </Section>
+    </div>
   );
 };
 
