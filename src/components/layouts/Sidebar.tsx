@@ -32,13 +32,12 @@ const Sidebar = ({ sections, activeSection, scrollProgress, onSectionClick }: Si
             {t.ui.fullstack_developer}
           </p>
 
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex items-center">
             <ThemeToggle
               isDarkMode={isDarkMode}
               toggleDarkMode={toggleDarkMode}
               size="lg"
             />
-            <LanguageSelector size="lg" />
           </div>
         </div>
 
@@ -49,7 +48,13 @@ const Sidebar = ({ sections, activeSection, scrollProgress, onSectionClick }: Si
           onSectionClick={onSectionClick}
         />
 
-        <SocialLinks variant="desktop" />
+        <div className="space-y-4">
+          <SocialLinks variant="desktop" />
+          
+          <div className="max-w-40">
+            <LanguageSelector size="lg" variant="select" />
+          </div>
+        </div>
       </div>
     </aside>
   );

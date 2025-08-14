@@ -4,7 +4,7 @@ import type { Language } from '../../hooks/useI18n';
 
 interface LanguageSelectorProps {
   size?: 'sm' | 'lg';
-  variant?: 'toggle' | 'dropdown';
+  variant?: 'toggle' | 'dropdown' | 'select';
 }
 
 const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorProps) => {
@@ -59,6 +59,37 @@ const LanguageSelector = ({ size = 'lg', variant = 'toggle' }: LanguageSelectorP
         {/* Simple Tooltip */}
         <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[var(--bg-surface)] text-[var(--text-primary)] text-xs px-2 py-1 rounded border border-[var(--border-color)] shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
           {otherLanguage.flag} {otherLanguage.label}
+        </div>
+      </div>
+    );
+  }
+
+  // Select variant for desktop
+  if (variant === 'select') {
+    return (
+      <div className="relative w-full">
+        <select
+          value={language}
+          onChange={(e) => setLanguage(e.target.value as Language)}
+          className="w-full appearance-none bg-[var(--bg-surface)] border border-[var(--border-color)] rounded-lg px-3 py-2 text-[var(--text-primary)] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 transition-all duration-300 cursor-pointer"
+          aria-label="Select language"
+        >
+          {languages.map((lang) => (
+            <option key={lang.code} value={lang.code}>
+              {lang.flag} {lang.label}
+            </option>
+          ))}
+        </select>
+        {/* Custom arrow */}
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+          <svg 
+            className="w-4 h-4 text-[var(--text-tertiary)]" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </div>
     );

@@ -10,6 +10,7 @@ import SocialLinks from '../ui/SocialLinks';
 import CursorHalo from '../effects/CursorHalo';
 import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
+import LanguageSelector from "../ui/LanguageSelector";
 
 const MainLayout = () => {
   const { t } = useI18n();
@@ -84,7 +85,7 @@ const MainLayout = () => {
     <div className="min-h-screen flex bg-[var(--bg-primary)] relative overflow-hidden">
       {/* Cursor halo effect */}
       <CursorHalo />
-      
+
       <Sidebar
         sections={sections}
         activeSection={activeSection}
@@ -121,8 +122,12 @@ const MainLayout = () => {
 
           <ContactForm />
 
-          <div className="lg:hidden pt-8 pb-6">
+          <div className="lg:hidden pt-8 pb-6 space-y-4">
             <SocialLinks variant="mobile" />
+
+            <div className="max-w-48 mx-auto">
+              <LanguageSelector size="lg" variant="select" />
+            </div>
           </div>
         </div>
       </main>
