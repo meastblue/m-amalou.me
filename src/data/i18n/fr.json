@@ -2,19 +2,39 @@
   "personal": {
     "name": "Massinissa Amalou",
     "title_one": "architecte logiciel & solution",
-    "title_two": "developper fullstack web & mobile"
+    "title_two": "développeur fullstack web & mobile",
+    "greeting": "Bonjour, je suis",
+    "tagline": "Je conçois des architectures robustes.",
+    "email": "contact@massinissa-amalou.fr"
+  },
+  "navigation": {
+    "hero": "Accueil",
+    "about": "Profil", 
+    "career": "Parcours",
+    "projects": "Projets",
+    "skills": "Expertise",
+    "contact": "Contact",
+    "resume": "Résumé",
+    "social_links": "Liens sociaux",
+    "section_navigation": "Navigation sections",
+    "mobile_navigation": "Navigation mobile"
   },
   "sections": {
-    "header": {
-      "title": "Massinissa Amalou"
-    },
     "hero": {
       "title": "",
-      "content": "Massinissa Amalou, architecte logiciel & solution basé à Paris. Expert en conception d'architectures robustes et évolutives, j'accompagne les équipes dans leurs projets stratégiques de transformation digitale et d'urbanisation de systèmes d'information."
+      "content": "Massinissa Amalou, architecte logiciel & solution basé à Paris. Expert en conception d'architectures robustes et évolutives, j'accompagne les équipes dans leurs projets stratégiques de transformation digitale et d'urbanisation de systèmes d'information.",
+      "cta_contact": "Me contacter",
+      "cta_projects": "Voir mes projets"
     },
     "about": {
       "title": "Profil",
       "content": "Architecte logiciel senior avec 6+ années d'expérience, je suis spécialisé en pilotage technique, gouvernance d'api REST et urbanisation de systèmes d'information complexes. Ma méthodologie couvre l'intégralité du cycle projet : définition d'architecture cible, développement fullstack (React.js, Angular, Vue.js, NestJS), mise en production et monitoring. Expert en conception d'architectures applicatives cloud-native et microservices, je garantis la robustesse, la scalabilité et la performance des solutions. Mes interventions chez Autodistribution, Crédit Agricole CIB et Société Générale démontrent ma capacité à piloter des transformations digitales d'envergure."
+    },
+    "career": {
+      "title": "Parcours"
+    },
+    "scholarship": {
+      "title": "Formation"
     },
     "projects": {
       "title": "Projets"
@@ -23,13 +43,8 @@
       "title": "Expertise"
     },
     "contact": {
-      "title": "Contact"
-    },
-    "career": {
-      "title": "Career"
-    },
-    "scholarship": {
-      "title": "Scholarship"
+      "title": "Restons en contact",
+      "description": "n'hésitez pas à me contacter pour discuter de vos projets, échanger sur l'architecture logicielle ou simplement faire connaissance."
     }
   },
   "career": [
@@ -77,7 +92,7 @@
       "description": "marketplace d'apis de données de référence pour autodistribution, incluant la conception d'apis rest, la gestion des releases et la gouvernance. solution centralisée permettant aux équipes de partager et consommer des données standardisées.",
       "image": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop",
       "technologies": ["NestJS", "MongoDB", "REST API"],
-      "stars": "Production",
+      "status": "Production",
       "link": ""
     },
     {
@@ -85,7 +100,7 @@
       "description": "développement d'un design system multi-technologies (angular, react, vue.js) pour les projets frontend du crédit agricole cib. pilotage de l'équipe de développement et animation des rituels agiles.",
       "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop",
       "technologies": ["Angular", "React", "Vue", "TailwindCSS"],
-      "stars": "5 apps",
+      "status": "5 apps",
       "link": ""
     },
     {
@@ -93,7 +108,7 @@
       "description": "erp référentiel multi-entités standardisant les référentiels via un erp central avec intégration store api. architecture modulaire permettant la gestion de données complexes multi-entités.",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
       "technologies": ["React", "PostgreSQL", "NestJS"],
-      "stars": "Multi-entités",
+      "status": "Multi-entités",
       "link": ""
     }
   ],
@@ -123,97 +138,89 @@
       "skills": ["NestJS", "Node.js", "REST API", "Express", "API Governance", "Backbone.js"]
     }
   ],
-  "navigation": [
-    { "id": "hero", "label": "Accueil", "section": "hero" },
-    { "id": "about", "label": "Profil", "section": "about" },
-    { "id": "career", "label": "Parcours", "section": "career" },
-    { "id": "projects", "label": "Projets", "section": "projects" },
-    { "id": "skills", "label": "Expertise", "section": "skills" },
-    { "id": "contact", "label": "Contact", "section": "contact" }
-  ],
   "form": {
     "labels": {
-      "firstName": "First name",
-      "lastName": "Last name",
+      "firstName": "Prénom",
+      "lastName": "Nom",
       "email": "Email",
-      "phone": "Number phone",
+      "phone": "Téléphone",
       "message": "Message"
     },
     "placeholders": {
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john.doe@gmail.com",
+      "firstName": "Jean",
+      "lastName": "Dupont",
+      "email": "jean.dupont@gmail.com",
       "phone": "+33 6 12 34 56 78",
-      "message": "Bonjour Massinissa,\n\nJ'ai consulté votre profil et je serais intéressé par vos services pour un projet d'architecture logicielle. Pourriez-vous me contacter pour en discuter ?\n\nCordialement,\nJohn Doe"
+      "message": "Bonjour Massinissa,\\n\\nJ'ai consulté votre profil et je serais intéressé par vos services pour un projet d'architecture logicielle. Pourriez-vous me contacter pour en discuter ?\\n\\nCordialement,\\nJean Dupont"
     },
     "errors": {
-      "firstName": "First name is required",
-      "lastName": "Last name is required",
-      "email": "Email is required",
-      "emailInvalid": "Please enter a valid email",
-      "message": "Message is required",
-      "general": "Missing either email or number phone.",
-      "submitFailed": "Failed to send message. Please try again."
+      "firstName": "Le prénom est requis",
+      "lastName": "Le nom est requis",
+      "email": "L'email est requis",
+      "emailInvalid": "Veuillez saisir un email valide",
+      "message": "Le message est requis",
+      "general": "Email ou téléphone requis.",
+      "submitFailed": "Échec de l'envoi. Veuillez réessayer."
     },
     "buttons": {
-      "submit": "Send mail",
-      "submitting": "Sending..."
+      "submit": "Envoyer",
+      "submitting": "Envoi en cours..."
     },
     "messages": {
-      "success": "Message sent successfully!",
-      "phoneOr": "OR"
+      "success": "Message envoyé avec succès !",
+      "phoneOr": "OU"
     }
   },
   "socials": [
     {
       "name": "GitHub",
       "url": "https://github.com/massinissa-amalou",
-      "icon": "github",
-      "color": "hover:text-gray-800 dark:hover:text-gray-300"
+      "icon": "github"
     },
     {
       "name": "LinkedIn",
       "url": "https://linkedin.com/in/massinissa-amalou",
-      "icon": "linkedin",
-      "color": "hover:text-blue-600 dark:hover:text-blue-400"
+      "icon": "linkedin"
     },
     {
       "name": "X",
       "url": "https://x.com/massinissa_amalou",
-      "icon": "x",
-      "color": "hover:text-black dark:hover:text-white"
+      "icon": "x"
     }
   ],
-  "socialIcons": {
-    "x": "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+  "accessibility": {
+    "toggle_theme": "Basculer le thème",
+    "scroll_progress": "Progression du défilement de la page",
+    "external_link": "Lien externe",
+    "dismiss_error": "Fermer le message d'erreur",
+    "expand_skills": "Développer les compétences {{title}}",
+    "collapse_skills": "Réduire les compétences {{title}}",
+    "career_experience": "Expérience professionnelle",
+    "education_experience": "Expérience éducative",
+    "navigate_to": "Naviguer vers {{section}}",
+    "github_profile": "Profil GitHub",
+    "linkedin_profile": "Profil LinkedIn", 
+    "twitter_profile": "Profil X (Twitter)",
+    "send_email": "Envoyer un email"
   },
-  "socialMessages": {
-    "description": "n'hésitez pas à me contacter pour discuter de vos projets, échanger sur l'architecture logicielle ou simplement faire connaissance."
+  "common": {
+    "and": "et",
+    "or": "ou",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "expand": "Développer",
+    "collapse": "Réduire",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "read_more": "Lire la suite",
+    "read_less": "Lire moins"
   },
-  "skillColors": {
-    "React": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Angular": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "Vue": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "TailwindCSS": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "TypeScript": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "NestJS": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "Node.js": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Express": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "MongoDB": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "PostgreSQL": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "REST API": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Architecture": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "API Design": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Microservices": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "System Design": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Agile": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "Scrum": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Kanban": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "Team Management": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Mentoring": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "Product Management": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Design Systems": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30",
-    "API Governance": "bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/30",
-    "Backbone.js": "bg-gray-50 text-gray-600 dark:bg-gray-800/20 dark:text-gray-400 border border-gray-200 dark:border-gray-700/30"
+  "meta": {
+    "title": "Massinissa Amalou - Architecte Logiciel & Solution",
+    "description": "Architecte logiciel senior basé à Paris, expert en conception d'architectures robustes et évolutives. Spécialisé en gouvernance d'API, microservices et transformation digitale.",
+    "keywords": "architecte logiciel, solution architect, développeur fullstack, React, Angular, Vue.js, NestJS, API, microservices, Paris"
   }
 }

@@ -1,45 +1,64 @@
-import { ExternalLink, Star } from 'lucide-react';
-import { usePortfolio } from '../../hooks/usePortfolio';
+import { MdOpenInNew, MdStar } from 'react-icons/md';
+import { useI18n } from '../../hooks/useI18n';
 import Pill from '../ui/Pill';
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import Typography from '../ui/Typography';
 
 const Projects = () => {
-  const { projects, sections, getTechColor } = usePortfolio();
+  const { t } = useI18n();
+  
+  // Harmonized tech color mapping using design system colors
+  const getTechColor = (tech: string) => {
+    const colors: Record<string, string> = {
+      'React': 'bg-[var(--color-accent-light)] text-[var(--color-accent)] border border-[var(--border-color)]',
+      'Angular': 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-color)]',
+      'Vue': 'bg-[var(--color-accent-light)] text-[var(--color-accent)] border border-[var(--border-color)]',
+      'NestJS': 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-color)]',
+      'MongoDB': 'bg-[var(--color-accent-light)] text-[var(--color-accent)] border border-[var(--border-color)]',
+      'PostgreSQL': 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-color)]',
+      'TailwindCSS': 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-color)]',
+      'TypeScript': 'bg-[var(--color-accent-light)] text-[var(--color-accent)] border border-[var(--border-color)]',
+      'REST API': 'bg-[var(--color-accent-light)] text-[var(--color-accent)] border border-[var(--border-color)]'
+    };
+    return colors[tech] || 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-color)]';
+  };
 
   return (
     <Section id="projects" spacing="base" containerSize="lg" aria-labelledby="projects-heading">
       <div className="space-fluid-xl">
         <h2
           id="projects-heading"
-          className="text-fluid-2xl font-bold text-left lowercase pb-2"
+          className="text-fluid-2xl font-bold text-left lowercase pb-2 flex items-center gap-4"
           style={{ color: 'var(--text-primary)' }}
         >
-          {sections.projects?.title || 'Projets'}
+          <span className="font-mono text-lg lg:text-xl" style={{ color: 'var(--color-accent)' }}>03.</span>
+          {t.sections.projects.title}
+          <span className="hidden sm:block h-[1px] flex-1 max-w-xs" style={{ backgroundColor: 'var(--border-color)' }}></span>
         </h2>
 
-        <div className="grid-responsive gap-6 sm:gap-8">
-          {projects.map((project) => (
+        <div className="grid-responsive">
+          {t.projects.map((project) => (
             <article
               key={project.title}
-              className="card group animate-mobile-scale"
+              className="card group animate-mobile-scale hover:shadow-xl transition-all duration-[var(--duration-base)] hover:-translate-y-1"
             >
               <div
-                className="aspect-video overflow-hidden rounded-t-[var(--radius-lg)]"
+                className="aspect-video overflow-hidden rounded-t-[var(--radius-lg)] relative"
                 style={{ backgroundColor: 'var(--bg-surface)' }}
               >
                 <img
                   src={project.image}
-                  alt={`${project.title} project screenshot`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[var(--duration-slow)]"
+                  alt={`${project.title} - ${project.description.substring(0, 50)}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[var(--duration-slow)]"
                   loading="lazy"
                   decoding="async"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[var(--duration-base)]" />
               </div>
 
-              <div className="p-4 sm:p-6 space-fluid-base">
-                <header className="flex items-center gap-2 mb-2 md:mb-3">
+              <div className="p-[var(--space-base)] sm:p-[var(--space-lg)] space-fluid-base">
+                <header className="flex items-center gap-2 mb-[var(--space-sm)]">
                   <h3
                     className="text-fluid-lg font-bold"
                     style={{ color: 'var(--text-primary)' }}
@@ -47,33 +66,32 @@ const Projects = () => {
                     {project.title}
                   </h3>
                   {project.link && (
-                    <ExternalLink
-                      size={14}
-                      className="md:w-4 md:h-4"
+                    <MdOpenInNew
+                      size={16}
                       style={{ color: 'var(--text-secondary)' }}
-                      aria-label="External link"
+                      aria-label={t.accessibility.external_link}
                     />
                   )}
                 </header>
 
                 <p
-                  className="text-fluid-sm leading-relaxed mb-3 md:mb-4"
+                  className="text-fluid-sm leading-relaxed mb-[var(--space-base)]"
                   style={{ color: 'var(--text-secondary)' }}
                 >
                   {project.description}
                 </p>
 
-                <div className="flex items-center gap-1.5 md:gap-2 mb-3 md:mb-4">
-                  <Star size={14} className="text-amber-500 fill-current md:w-4 md:h-4" aria-hidden="true" />
+                <div className="flex items-center gap-2 mb-[var(--space-base)]">
+                  <MdStar size={16} className="text-amber-500 fill-current" aria-hidden="true" />
                   <span
                     className="text-fluid-sm font-semibold"
                     style={{ color: 'var(--text-primary)' }}
                   >
-                    {project.stars}
+                    {project.status}
                   </span>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 md:gap-2">
+                <div className="flex flex-wrap gap-[var(--space-xs)]">
                   {project.technologies.map((tech: string) => {
                     const techColor = getTechColor(tech);
                     return (

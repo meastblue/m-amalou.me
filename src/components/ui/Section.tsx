@@ -28,10 +28,10 @@ const Section = ({
 }: SectionProps) => {
   const spacingClasses = {
     none: '',
-    sm: 'pb-6',
-    base: 'pb-12',
-    lg: 'pb-16',
-    xl: 'pb-20'
+    sm: 'py-12 sm:py-16 lg:py-20',
+    base: 'py-16 sm:py-20 lg:py-24',
+    lg: 'py-20 sm:py-24 lg:py-32',
+    xl: 'py-24 sm:py-32 lg:py-40'
   };
 
   const backgroundClasses = {
@@ -44,7 +44,7 @@ const Section = ({
   return (
     <Component 
       id={id}
-      className={`${spacingClasses[spacing]} ${backgroundClasses[background]} ${className}`}
+      className={`${spacingClasses[spacing]} ${backgroundClasses[background]} ${className} scroll-mt-20`}
       aria-labelledby={ariaLabelledBy}
     >
       <Container size={containerSize}>

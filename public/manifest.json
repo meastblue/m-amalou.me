@@ -1,0 +1,21 @@
+{
+  "name": "Massinissa Amalou - Architecte Logiciel & Solution",
+  "short_name": "M. Amalou",
+  "description": "Portfolio de Massinissa Amalou - Expert en architectures applicatives et développement fullstack",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "developer", "portfolio"],
+  "lang": "fr-FR",
+  "dir": "ltr"
+}

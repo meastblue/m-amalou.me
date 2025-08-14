@@ -1,34 +1,7 @@
 @import './design-system.css';
 @import "tailwindcss";
 
-/* CSS Variables */
-:root {
-  /* Brand colors */
-  --color-primary: #3b82f6;
-  --color-secondary: #6b7280;
-  --color-accent: #f59e0b;
-
-  /* Light theme (default) */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
-  --bg-surface: #ffffff;
-  --text-primary: #111827;
-  --text-secondary: #6b7280;
-  --border-color: #e5e7eb;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Dark theme - Tailwind v4 approach */
-:root.dark,
-[data-theme="dark"] {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-surface: #334155;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --border-color: #475569;
-  --shadow-color: rgba(0, 0, 0, 0.3);
-}
+/* Note: All CSS variables are now defined in design-system.css */
 
 /* Initialize dark mode by default */
 :root {

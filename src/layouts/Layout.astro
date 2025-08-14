@@ -3,27 +3,114 @@ import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="fr" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Professional portfolio showcasing technical expertise in architecture, API governance, and system development" />
-    <meta name="keywords" content="portfolio, developer, architect, API, governance, technical lead" />
-    <meta name="author" content="Portfolio" />
+    
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="dns-prefetch" href="https://linkedin.com">
+    <link rel="dns-prefetch" href="https://github.com">
+    <link rel="dns-prefetch" href="https://x.com">
+    <meta name="description" content="Massinissa Amalou - Architecte Logiciel & Solution à Paris. Expert en conception d'architectures applicatives, gouvernance d'API, urbanisation de systèmes. Développeur Fullstack React, Angular, Vue.js, NestJS. Accompagnement projets stratégiques pour Autodistribution, Crédit Agricole CIB, Société Générale." />
+    <meta name="keywords" content="Massinissa Amalou, architecte logiciel, architecte solution, gouvernance API, urbanisation systèmes, architectures applicatives, développeur fullstack, React, Angular, Vue.js, NestJS, technical leader, Paris, France, design system, microservices, REST API, MongoDB, PostgreSQL, Autodistribution, Crédit Agricole CIB, Société Générale" />
+    <meta name="author" content="Massinissa Amalou" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://massinissa-amalou.fr" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Professional Portfolio" />
-    <meta property="og:description" content="Technical expertise in architecture and system development" />
+    <meta property="og:url" content="https://massinissa-amalou.fr" />
+    <meta property="og:title" content="Massinissa Amalou - Architecte Logiciel & Solution | Paris" />
+    <meta property="og:description" content="Expert en conception d'architectures applicatives et gouvernance d'API. Développeur Fullstack spécialisé React, Angular, Vue.js. Accompagnement de projets stratégiques." />
+    <meta property="og:image" content="https://massinissa-amalou.fr/og-image.jpg" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Massinissa Amalou - Portfolio" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Professional Portfolio" />
-    <meta property="twitter:description" content="Technical expertise in architecture and system development" />
+    <meta property="twitter:url" content="https://massinissa-amalou.fr" />
+    <meta property="twitter:title" content="Massinissa Amalou - Architecte Logiciel & Solution" />
+    <meta property="twitter:description" content="Expert en architectures applicatives et gouvernance d'API. Développeur Fullstack React, Angular, Vue.js, NestJS à Paris." />
+    <meta property="twitter:image" content="https://massinissa-amalou.fr/twitter-image.jpg" />
+    <meta property="twitter:creator" content="@massinissa_amalou" />
     
-    <title>Portfolio - Technical Architect & Developer</title>
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <title>Massinissa Amalou - Architecte Logiciel & Solution | Développeur Fullstack | Paris</title>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Massinissa Amalou",
+      "jobTitle": "Architecte Logiciel & Solution",
+      "description": "Expert en conception d'architectures applicatives, gouvernance d'API et urbanisation de systèmes",
+      "url": "https://massinissa-amalou.fr",
+      "sameAs": [
+        "https://linkedin.com/in/massinissa-amalou",
+        "https://github.com/massinissa-amalou",
+        "https://x.com/massinissa_amalou"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Paris",
+        "addressCountry": "FR"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "IPSSI",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          }
+        }
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Autodistribution"
+      },
+      "knowsAbout": [
+        "Architecture Logicielle",
+        "Gouvernance API",
+        "Urbanisation de Systèmes",
+        "React",
+        "Angular",
+        "Vue.js",
+        "NestJS",
+        "MongoDB",
+        "PostgreSQL",
+        "Microservices",
+        "Design Systems",
+        "REST API",
+        "Agile",
+        "Scrum"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Master en Informatique",
+          "credentialCategory": "degree"
+        }
+      ]
+    }
+    </script>
+    
     <script>
       // Ensure dark mode is set by default
       if (!localStorage.getItem('portfolio-theme')) {

@@ -1,107 +1,237 @@
-import { useEffect, useState } from 'react';
-import { usePortfolio } from '../../hooks/usePortfolio';
+import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useI18n, useI18nNavigation } from '../../hooks/useI18n';
 
 const Navigation = () => {
-  const { navigation } = usePortfolio();
+  const { t, translate } = useI18n();
+  const navigation = useI18nNavigation();
   const [activeSection, setActiveSection] = useState('hero');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
-  const SCROLL_OFFSET = 200;
+  const SCROLL_OFFSET = 100;
+  const SCROLL_THRESHOLD = 50;
 
-  const scrollToSection = (sectionId: string): void => {
+  const scrollToSection = useCallback((sectionId: string): void => {
     const element = document.getElementById(sectionId);
     if (!element) return;
 
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    const headerHeight = 80;
+    const elementPosition = element.offsetTop - headerHeight;
+    
+    window.scrollTo({
+      top: elementPosition,
+      behavior: 'smooth'
     });
+    
     setActiveSection(sectionId);
-  };
+  }, []);
 
-  const handleScroll = (): void => {
+  const handleScroll = useCallback((): void => {
+    const currentScrollY = window.scrollY;
     const sections = navigation.map(item => item.section);
 
+    // Auto-hide/show navigation on scroll
+    if (currentScrollY > lastScrollY && currentScrollY > SCROLL_THRESHOLD) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+    
+    setLastScrollY(currentScrollY);
+    setIsScrolled(currentScrollY > SCROLL_THRESHOLD);
+
+    // Active section detection with improved logic
+    let newActiveSection = 'hero';
+    let minDistance = Infinity;
+    
     for (const section of sections) {
       const element = document.getElementById(section);
       if (!element) continue;
 
       const rect = element.getBoundingClientRect();
-      if (rect.top <= SCROLL_OFFSET && rect.bottom >= SCROLL_OFFSET) {
-        setActiveSection(section);
-        break;
+      const distance = Math.abs(rect.top - SCROLL_OFFSET);
+      
+      if (rect.top <= SCROLL_OFFSET && rect.bottom >= SCROLL_OFFSET && distance < minDistance) {
+        newActiveSection = section;
+        minDistance = distance;
       }
     }
-  };
+    
+    if (newActiveSection !== activeSection) {
+      setActiveSection(newActiveSection);
+    }
+  }, [navigation, activeSection, lastScrollY]);
+
+  // Throttled scroll handler for performance
+  const throttledHandleScroll = useMemo(() => {
+    let timeoutId: NodeJS.Timeout;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => handleScroll(), 10);
+    };
+  }, [handleScroll]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', throttledHandleScroll, { passive: true });
       handleScroll();
 
       return () => {
-        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('scroll', throttledHandleScroll);
       };
     }
+  }, [throttledHandleScroll, handleScroll]);
+
+  // Page load animation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 500);
+    return () => clearTimeout(timer);
   }, []);
 
+  // Keyboard navigation support
+  const handleKeyDown = useCallback((e: React.KeyboardEvent, sectionId: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      scrollToSection(sectionId);
+    }
+  }, [scrollToSection]);
+
   return (
-    <nav
-      className="mobile-nav fixed bottom-0 left-0 right-0 z-[var(--z-fixed)] backdrop-blur-lg shadow-lg border-t safe-bottom"
-      style={{
-        backgroundColor: 'var(--bg-elevated)',
-        borderColor: 'var(--border-color)',
-        opacity: 0.95
-      }}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div >
-        <div className="flex justify-center">
-          <div
-            className="flex items-center gap-0.5 rounded-full p-1 shadow-inner w-full max-w-sm overflow-x-auto scrollbar-hide"
-            style={{
-              backgroundColor: 'var(--bg-surface)',
-              opacity: 0.9
-            }}
-          >
-            {navigation.map((item) => (
+    <>
+
+      {/* Desktop Right Sidebar - Email */}
+      <div className={`hidden lg:flex fixed right-8 xl:right-12 bottom-0 w-10 flex-col items-center gap-5 pb-6 z-50 transition-transform duration-300 ${
+        isVisible ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <a href="mailto:contact@massinissa-amalou.fr" 
+           className="transition-all duration-300 text-xs font-mono tracking-widest hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded-sm p-2"
+           style={{ 
+             writingMode: 'vertical-rl',
+             color: 'var(--text-tertiary)',
+             '--tw-ring-color': 'var(--color-accent)'
+           }}
+           onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
+           onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-tertiary)'}
+           aria-label={t.accessibility.send_email}>
+          {t.personal.email}
+        </a>
+        <div className="w-[1px] h-20" style={{ backgroundColor: 'var(--border-color)' }}></div>
+      </div>
+
+      {/* Desktop Navigation Dots */}
+      <nav 
+        className={`hidden lg:block fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300 ${
+          isScrolled ? 'opacity-90 scale-95' : 'opacity-100 scale-100'
+        } ${
+          isVisible ? 'translate-y-[-50%]' : 'translate-y-[-200%]'
+        }`}
+        role="navigation"
+        aria-label={t.navigation.section_navigation}
+      >
+        <ul className="flex flex-col gap-8">
+          {navigation.map((item, index) => (
+            <li key={item.id}>
+              <button
+                onClick={() => scrollToSection(item.section)}
+                onKeyDown={(e) => handleKeyDown(e, item.section)}
+                className="group flex items-center gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded-lg p-2 transition-all duration-300 hover:scale-105"
+                style={{
+                  '--tw-ring-color': 'var(--color-accent)'
+                }}
+                aria-label={translate('accessibility.navigate_to', { section: item.label })}
+                aria-current={activeSection === item.section ? 'page' : undefined}
+              >
+                <span className="text-xs font-mono transition-all duration-300"
+                      style={{ 
+                        color: activeSection === item.section 
+                          ? 'var(--color-accent)' 
+                          : 'var(--text-tertiary)'
+                      }}>
+                  0{index + 1}
+                </span>
+                <div className="flex items-center gap-3">
+                  <span className="block transition-all duration-500 ease-out"
+                        style={{
+                          width: activeSection === item.section ? '56px' : '32px',
+                          height: activeSection === item.section ? '3px' : '1px',
+                          backgroundColor: activeSection === item.section 
+                            ? 'var(--color-accent)' 
+                            : 'var(--border-color)',
+                          borderRadius: '2px',
+                          boxShadow: activeSection === item.section 
+                            ? '0 0 8px var(--color-accent-light)' 
+                            : 'none'
+                        }} />
+                  <span className="text-sm transition-all duration-300 group-hover:text-[var(--color-accent)]"
+                        style={{ 
+                          color: activeSection === item.section
+                            ? 'var(--text-primary)'
+                            : 'var(--text-secondary)',
+                          fontWeight: activeSection === item.section ? '600' : '400',
+                          letterSpacing: activeSection === item.section ? '0.025em' : '0'
+                        }}>
+                    {item.label}
+                  </span>
+                </div>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Mobile Bottom Navigation */}
+      <nav
+        className={`lg:hidden fixed bottom-0 left-0 right-0 z-[var(--z-fixed)] backdrop-blur-xl border-t safe-bottom transition-all duration-300 ${
+          isVisible ? 'translate-y-0' : 'translate-y-full'
+        } ${
+          isScrolled ? 'shadow-lg' : ''
+        }`}
+        style={{
+          backgroundColor: isScrolled 
+            ? 'var(--bg-secondary)' 
+            : 'rgba(var(--bg-secondary-rgb, 255, 255, 255), 0.95)',
+          borderColor: 'var(--border-color)',
+        }}
+        role="navigation"
+        aria-label={t.navigation.mobile_navigation}
+      >
+        <div className="px-2 py-3 safe-bottom">
+          <div className="flex items-center justify-around gap-1">
+            {navigation.slice(0, 5).map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.section)}
-                className={`touch-target px-1.5 py-1.5 text-xs sm:text-fluid-sm font-medium transition-all duration-[var(--duration-base)] rounded-full flex-shrink-0 whitespace-nowrap animate-mobile-scale ${
-                  activeSection === item.section
-                    ? 'shadow-sm border'
-                    : 'hover:opacity-80'
-                }`}
+                onKeyDown={(e) => handleKeyDown(e, item.section)}
+                className="flex-1 min-w-0 px-2 py-3 text-xs font-medium transition-all duration-300 rounded-lg touch-target focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95"
                 style={{
-                  backgroundColor: activeSection === item.section ? 'var(--bg-surface)' : 'transparent',
-                  color: activeSection === item.section ? 'var(--color-primary)' : 'var(--text-secondary)',
-                  borderColor: activeSection === item.section ? 'var(--color-primary)' : 'transparent'
+                  color: activeSection === item.section
+                    ? 'var(--color-accent)'
+                    : 'var(--text-secondary)',
+                  backgroundColor: activeSection === item.section
+                    ? 'var(--color-accent-light)'
+                    : 'transparent',
+                  fontWeight: activeSection === item.section ? '600' : '500',
+                  '--tw-ring-color': 'var(--color-accent)'
                 }}
-                onMouseEnter={(e) => {
-                  if (activeSection !== item.section) {
-                    e.currentTarget.style.backgroundColor = 'var(--bg-surface)';
-                    e.currentTarget.style.color = 'var(--text-primary)';
-                    e.currentTarget.style.opacity = '0.5';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeSection !== item.section) {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.color = 'var(--text-secondary)';
-                    e.currentTarget.style.opacity = '1';
-                  }
-                }}
-                aria-label={`Navigate to ${item.label} section`}
+                aria-label={translate('accessibility.navigate_to', { section: item.label })}
                 aria-current={activeSection === item.section ? 'page' : undefined}
               >
-                {item.label}
+                <span className="block truncate">{item.label}</span>
+                {activeSection === item.section && (
+                  <span 
+                    className="block w-6 h-0.5 mx-auto mt-1 rounded-full transition-all duration-300"
+                    style={{ backgroundColor: 'var(--color-accent)' }}
+                  />
+                )}
               </button>
             ))}
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 

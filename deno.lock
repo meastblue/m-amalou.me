@@ -6,8 +6,8 @@
     "npm:@types/react-dom@^19.1.7": "19.1.7_@types+react@19.1.10",
     "npm:@types/react@^19.1.10": "19.1.10",
     "npm:astro@^5.12.9": "5.12.9_vite@6.3.5__picomatch@4.0.3_zod@3.25.76",
-    "npm:lucide-react@0.539": "0.539.0_react@19.1.1",
     "npm:react-dom@^19.1.1": "19.1.1_react@19.1.1",
+    "npm:react-icons@^5.5.0": "5.5.0_react@19.1.1",
     "npm:react@^19.1.1": "19.1.1",
     "npm:tailwindcss@^4.1.11": "4.1.11"
   },
@@ -1428,12 +1428,6 @@
         "yallist@3.1.1"
       ]
     },
-    "lucide-react@0.539.0_react@19.1.1": {
-      "integrity": "sha512-VVISr+VF2krO91FeuCrm1rSOLACQUYVy7NQkzrOty52Y8TlTPcXcMdQFj9bYzBgXbWCiywlwSZ3Z8u6a+6bMlg==",
-      "dependencies": [
-        "react"
-      ]
-    },
     "magic-string@0.30.17": {
       "integrity": "sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==",
       "dependencies": [
@@ -1979,6 +1973,12 @@
       "dependencies": [
         "react",
         "scheduler"
+      ]
+    },
+    "react-icons@5.5.0_react@19.1.1": {
+      "integrity": "sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==",
+      "dependencies": [
+        "react"
       ]
     },
     "react-refresh@0.17.0": {
@@ -2549,8 +2549,8 @@
         "npm:@types/react-dom@^19.1.7",
         "npm:@types/react@^19.1.10",
         "npm:astro@^5.12.9",
-        "npm:lucide-react@0.539",
         "npm:react-dom@^19.1.1",
+        "npm:react-icons@^5.5.0",
         "npm:react@^19.1.1",
         "npm:tailwindcss@^4.1.11"
       ]

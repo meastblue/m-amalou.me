@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { AlertCircle, X, ArrowRight } from 'lucide-react';
-import { usePortfolio } from '../../hooks/usePortfolio';
+import { MdError, MdClose, MdArrowForward } from 'react-icons/md';
+import { useI18n } from '../../hooks/useI18n';
 import Section from '../ui/Section';
 import Button from '../ui/Button';
 
@@ -22,7 +22,7 @@ interface FormErrors {
 }
 
 const Contact = () => {
-  const { sections, form } = usePortfolio();
+  const { t } = useI18n();
 
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
@@ -39,26 +39,26 @@ const Contact = () => {
     const newErrors: FormErrors = {};
 
     if (!formData.firstName.trim()) {
-      newErrors.firstName = form.errors.firstName;
+      newErrors.firstName = t.form.errors.firstName;
     }
 
     if (!formData.lastName.trim()) {
-      newErrors.lastName = form.errors.lastName;
+      newErrors.lastName = t.form.errors.lastName;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = form.errors.email;
+      newErrors.email = t.form.errors.email;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = form.errors.emailInvalid;
+      newErrors.email = t.form.errors.emailInvalid;
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = form.errors.message;
+      newErrors.message = t.form.errors.message;
     }
 
     // Vérifier si email OU numéro de téléphone est manquant
     if (!formData.email.trim() && !formData.phone.trim()) {
-      newErrors.general = form.errors.general;
+      newErrors.general = t.form.errors.general;
     }
 
     setErrors(newErrors);
@@ -87,9 +87,9 @@ const Contact = () => {
         message: ''
       });
 
-      alert(form.messages.success);
+      alert(t.form.messages.success);
     } catch (error) {
-      setErrors({ general: form.errors.submitFailed });
+      setErrors({ general: t.form.errors.submitFailed });
     } finally {
       setIsSubmitting(false);
     }
@@ -113,10 +113,10 @@ const Contact = () => {
       <div className="space-fluid-xl">
         <h2
           id="contact-heading"
-          className="text-fluid-2xl font-bold text-center lowercase pb-2"
+          className="text-fluid-2xl font-bold text-left lowercase pb-2"
           style={{ color: 'var(--text-primary)' }}
         >
-          {sections.contact.title}
+          {t.sections.contact.title}
         </h2>
 
         <div
@@ -134,24 +134,24 @@ const Contact = () => {
               aria-live="polite"
             >
               <div className="flex items-center gap-3">
-                <AlertCircle size={20} className="text-red-500 flex-shrink-0" aria-hidden="true" />
-                <span className="text-fluid-sm" style={{ color: '#dc2626' }}>
+                <MdError size={20} className="text-red-500 flex-shrink-0" aria-hidden="true" />
+                <span className="text-fluid-sm" style={{ color: 'var(--color-error-hover)' }}>
                   {errors.general}
                 </span>
               </div>
               <button
                 onClick={() => clearError('general')}
                 className="touch-target transition-colors duration-[var(--duration-base)] animate-mobile-scale"
-                style={{ color: '#ef4444' }}
+                style={{ color: 'var(--color-error)' }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#dc2626';
+                  e.currentTarget.style.color = 'var(--color-error-hover)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#ef4444';
+                  e.currentTarget.style.color = 'var(--color-error)';
                 }}
-                aria-label="Dismiss error message"
+                aria-label={t.accessibility.dismiss_error}
               >
-                <X size={16} />
+                <MdClose size={16} />
               </button>
             </div>
           )}
@@ -163,16 +163,16 @@ const Contact = () => {
                   className="block text-fluid-sm font-medium"
                   style={{ color: 'var(--text-secondary)' }}
                 >
-                  {form.labels.firstName}<span className="text-red-500">*</span>
+                  {t.form.labels.firstName}<span className="text-red-500">*</span>
                 </label>
                 <input
                   value={formData.firstName}
                   onChange={(e) => handleInputChange('firstName', e.target.value)}
                   type="text"
-                  placeholder={form.placeholders.firstName}
+                  placeholder={t.form.placeholders.firstName}
                   className={`input-field ${errors.firstName ? 'input-error' : ''}`}
                   style={{
-                    borderColor: errors.firstName ? '#ef4444' : 'var(--border-color)',
+                    borderColor: errors.firstName ? 'var(--color-error)' : 'var(--border-color)',
                     backgroundColor: 'var(--bg-primary)',
                     color: 'var(--text-primary)'
                   }}
@@ -191,16 +191,16 @@ const Contact = () => {
                   className="block text-fluid-sm font-medium"
                   style={{ color: 'var(--text-secondary)' }}
                 >
-                  {form.labels.lastName}<span className="text-red-500">*</span>
+                  {t.form.labels.lastName}<span className="text-red-500">*</span>
                 </label>
                 <input
                   value={formData.lastName}
                   onChange={(e) => handleInputChange('lastName', e.target.value)}
                   type="text"
-                  placeholder={form.placeholders.lastName}
+                  placeholder={t.form.placeholders.lastName}
                   className={`input-field ${errors.lastName ? 'input-error' : ''}`}
                   style={{
-                    borderColor: errors.lastName ? '#ef4444' : 'var(--border-color)',
+                    borderColor: errors.lastName ? 'var(--color-error)' : 'var(--border-color)',
                     backgroundColor: 'var(--bg-primary)',
                     color: 'var(--text-primary)'
                   }}
@@ -221,16 +221,16 @@ const Contact = () => {
                   className="block text-fluid-sm font-medium"
                   style={{ color: 'var(--text-secondary)' }}
                 >
-                  {form.labels.email}
+                  {t.form.labels.email}
                 </label>
                 <input
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
                   type="email"
-                  placeholder={form.placeholders.email}
+                  placeholder={t.form.placeholders.email}
                   className={`input-field ${errors.email ? 'input-error' : ''}`}
                   style={{
-                    borderColor: errors.email ? '#ef4444' : 'var(--border-color)',
+                    borderColor: errors.email ? 'var(--color-error)' : 'var(--border-color)',
                     backgroundColor: 'var(--bg-primary)',
                     color: 'var(--text-primary)'
                   }}
@@ -249,16 +249,16 @@ const Contact = () => {
                   className="block text-fluid-sm font-medium"
                   style={{ color: 'var(--text-secondary)' }}
                 >
-                  {form.labels.phone}
+                  {t.form.labels.phone}
                 </label>
                 <input
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
                   type="tel"
-                  placeholder={form.placeholders.phone}
+                  placeholder={t.form.placeholders.phone}
                   className={`input-field ${errors.phone ? 'input-error' : ''}`}
                   style={{
-                    borderColor: errors.phone ? '#ef4444' : 'var(--border-color)',
+                    borderColor: errors.phone ? 'var(--color-error)' : 'var(--border-color)',
                     backgroundColor: 'var(--bg-primary)',
                     color: 'var(--text-primary)'
                   }}
@@ -278,16 +278,16 @@ const Contact = () => {
                 className="block text-fluid-sm font-medium"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                {form.labels.message}<span className="text-red-500">*</span>
+                {t.form.labels.message}<span className="text-red-500">*</span>
               </label>
               <textarea
                 value={formData.message}
                 onChange={(e) => handleInputChange('message', e.target.value)}
                 rows={6}
-                placeholder={form.placeholders.message}
+                placeholder={t.form.placeholders.message}
                 className={`input-field resize-none ${errors.message ? 'input-error' : ''}`}
                 style={{
-                  borderColor: errors.message ? '#ef4444' : 'var(--border-color)',
+                  borderColor: errors.message ? 'var(--color-error)' : 'var(--border-color)',
                   backgroundColor: 'var(--bg-primary)',
                   color: 'var(--text-primary)'
                 }}
@@ -307,10 +307,10 @@ const Contact = () => {
               size="lg"
               fullWidth
               loading={isSubmitting}
-              icon={!isSubmitting ? <ArrowRight size={20} /> : undefined}
+              icon={!isSubmitting ? <MdArrowForward size={20} /> : undefined}
               iconPosition="right"
             >
-              {isSubmitting ? form.buttons.submitting : form.buttons.submit}
+              {isSubmitting ? t.form.buttons.submitting : t.form.buttons.submit}
             </Button>
           </form>
         </div>

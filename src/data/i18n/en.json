@@ -1,0 +1,226 @@
+{
+  "personal": {
+    "name": "Massinissa Amalou",
+    "title_one": "software & solution architect",
+    "title_two": "fullstack web & mobile developer",
+    "greeting": "Hello, I'm",
+    "tagline": "I design robust architectures.",
+    "email": "contact@massinissa-amalou.fr"
+  },
+  "navigation": {
+    "hero": "Home",
+    "about": "About", 
+    "career": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "resume": "Resume",
+    "social_links": "Social links",
+    "section_navigation": "Section navigation",
+    "mobile_navigation": "Mobile navigation"
+  },
+  "sections": {
+    "hero": {
+      "title": "",
+      "content": "Massinissa Amalou, software & solution architect based in Paris. Expert in designing robust and scalable architectures, I support teams in their strategic digital transformation and information system modernization projects.",
+      "cta_contact": "Get in touch",
+      "cta_projects": "View my work"
+    },
+    "about": {
+      "title": "About",
+      "content": "Senior software architect with 6+ years of experience, specialized in technical leadership, REST API governance and complex information system modernization. My methodology covers the entire project lifecycle: target architecture definition, fullstack development (React.js, Angular, Vue.js, NestJS), production deployment and monitoring. Expert in cloud-native and microservices application architectures, I ensure solution robustness, scalability and performance. My interventions at Autodistribution, Crédit Agricole CIB and Société Générale demonstrate my ability to lead large-scale digital transformations."
+    },
+    "career": {
+      "title": "Experience"
+    },
+    "scholarship": {
+      "title": "Education"
+    },
+    "projects": {
+      "title": "Projects"
+    },
+    "skills": {
+      "title": "Skills"
+    },
+    "contact": {
+      "title": "Let's stay in touch",
+      "description": "feel free to reach out to discuss your projects, talk about software architecture or simply get to know each other."
+    }
+  },
+  "career": [
+    {
+      "company": "Autodistribution",
+      "period": "2023 - present",
+      "position": "software & solution architect",
+      "description": "technical intervention on several strategic projects, including application architecture design, API governance, and product support. projects: store api (api marketplace), hub360 (crm platform), lynx (multi-entity erp), mead (b2b extranet redesign), catgr (european bodywork repository).",
+      "location": "PARIS, FRANCE"
+    },
+    {
+      "company": "Crédit Agricole CIB",
+      "period": "2020 - 2023",
+      "position": "frontend technical leader",
+      "description": "frontend technical leader, responsible for developing a cross-functional design system. projects: loanscape (loan back-office redesign with angular 15), pure pixel (multi-technology design system). team management in france and singapore, product backlog management and agile ceremonies facilitation.",
+      "location": "PARIS, FRANCE"
+    },
+    {
+      "company": "Société Générale",
+      "period": "2018 - 2020",
+      "position": "frontend developer",
+      "description": "frontend developer responsible for maintaining a client/advisor relationship application and developing a chatbot. projects: interact (client/advisor relationship with backbone.js), chatbot (conversational tool in react.js).",
+      "location": "PARIS, FRANCE"
+    }
+  ],
+  "scholarship": [
+    {
+      "institution": "IPSSI",
+      "period": "2016 - 2019",
+      "degree": "master's in computer science",
+      "description": "in-depth training in software architecture, application development and IT project management.",
+      "location": "PARIS, FRANCE"
+    },
+    {
+      "institution": "CERFAL Campus Montsouris",
+      "period": "2014 - 2016",
+      "degree": "bts sio - it services for organizations",
+      "description": "technical training in application development, system administration and IT infrastructure management.",
+      "location": "PARIS, FRANCE"
+    }
+  ],
+  "projects": [
+    {
+      "title": "STORE API",
+      "description": "reference data api marketplace for autodistribution, including rest api design, release management and governance. centralized solution enabling teams to share and consume standardized data.",
+      "image": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop",
+      "technologies": ["NestJS", "MongoDB", "REST API"],
+      "status": "Production",
+      "link": ""
+    },
+    {
+      "title": "Pure Pixel Design System",
+      "description": "development of a multi-technology design system (angular, react, vue.js) for crédit agricole cib frontend projects. development team leadership and agile ceremonies facilitation.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop",
+      "technologies": ["Angular", "React", "Vue", "TailwindCSS"],
+      "status": "5 apps",
+      "link": ""
+    },
+    {
+      "title": "LYNX ERP",
+      "description": "multi-entity repository erp standardizing repositories through a central erp with store api integration. modular architecture enabling complex multi-entity data management.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+      "technologies": ["React", "PostgreSQL", "NestJS"],
+      "status": "Multi-entity",
+      "link": ""
+    }
+  ],
+  "skills": [
+    {
+      "id": "architecture-solution",
+      "title": "Architecture",
+      "description": "expertise in <strong>application architecture design</strong>, <strong>api governance</strong> and <strong>system modernization</strong>. i design robust, scalable solutions aligned with business challenges, from target definition to production deployment.",
+      "skills": ["Architecture", "API Design", "Microservices", "System Design", "MongoDB", "PostgreSQL"]
+    },
+    {
+      "id": "technical-leadership",
+      "title": "Management",
+      "description": "technical leadership of development teams, management in <strong>france and internationally</strong>. agile ceremonies facilitation, product backlog management and team support in adopting best practices.",
+      "skills": ["Agile", "Scrum", "Kanban", "Team Management", "Mentoring", "Product Management"]
+    },
+    {
+      "id": "frontend-expertise",
+      "title": "Frontend",
+      "description": "deep mastery of <strong>modern frameworks</strong> with particular expertise in <strong>react, angular and vue.js</strong>. cross-functional design systems development and scalable micro front-end solutions.",
+      "skills": ["React", "Angular", "Vue", "TailwindCSS", "Design Systems", "TypeScript"]
+    },
+    {
+      "id": "backend-api",
+      "title": "Backend",
+      "description": "robust api development and technical governance. expertise in <strong>nest.js</strong> and <strong>rest</strong> architectures. release management, monitoring and performance optimization.",
+      "skills": ["NestJS", "Node.js", "REST API", "Express", "API Governance", "Backbone.js"]
+    }
+  ],
+  "form": {
+    "labels": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Phone number",
+      "message": "Message"
+    },
+    "placeholders": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@gmail.com",
+      "phone": "+33 6 12 34 56 78",
+      "message": "Hello Massinissa,\\n\\nI reviewed your profile and would be interested in your services for a software architecture project. Could you contact me to discuss this further?\\n\\nBest regards,\\nJohn Doe"
+    },
+    "errors": {
+      "firstName": "First name is required",
+      "lastName": "Last name is required",
+      "email": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "message": "Message is required",
+      "general": "Missing either email or phone number.",
+      "submitFailed": "Failed to send message. Please try again."
+    },
+    "buttons": {
+      "submit": "Send message",
+      "submitting": "Sending..."
+    },
+    "messages": {
+      "success": "Message sent successfully!",
+      "phoneOr": "OR"
+    }
+  },
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/massinissa-amalou",
+      "icon": "github"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/massinissa-amalou",
+      "icon": "linkedin"
+    },
+    {
+      "name": "X",
+      "url": "https://x.com/massinissa_amalou",
+      "icon": "x"
+    }
+  ],
+  "accessibility": {
+    "toggle_theme": "Toggle theme",
+    "scroll_progress": "Page scroll progress",
+    "external_link": "External link",
+    "dismiss_error": "Dismiss error message",
+    "expand_skills": "Expand {{title}} skills",
+    "collapse_skills": "Collapse {{title}} skills",
+    "career_experience": "Career experience",
+    "education_experience": "Education experience",
+    "navigate_to": "Navigate to {{section}}",
+    "github_profile": "GitHub profile",
+    "linkedin_profile": "LinkedIn profile", 
+    "twitter_profile": "X (Twitter) profile",
+    "send_email": "Send email"
+  },
+  "common": {
+    "and": "and",
+    "or": "or",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close",
+    "open": "Open",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "previous": "Previous",
+    "next": "Next",
+    "read_more": "Read more",
+    "read_less": "Read less"
+  },
+  "meta": {
+    "title": "Massinissa Amalou - Software & Solution Architect",
+    "description": "Senior software architect based in Paris, expert in designing robust and scalable architectures. Specialized in API governance, microservices and digital transformation.",
+    "keywords": "software architect, solution architect, fullstack developer, React, Angular, Vue.js, NestJS, API, microservices, Paris"
+  }
+}

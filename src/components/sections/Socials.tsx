@@ -1,4 +1,5 @@
-import { ExternalLink, Github, Linkedin } from 'lucide-react';
+import { MdOpenInNew } from 'react-icons/md';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { usePortfolio } from '../../hooks/usePortfolio';
 import Section from '../ui/Section';
 
@@ -7,10 +8,10 @@ const Socials = () => {
 
   const getIconComponent = (iconName: string) => {
     const iconMap: Record<string, any> = {
-      github: Github,
-      linkedin: Linkedin
+      github: FaGithub,
+      linkedin: FaLinkedin
     };
-    return iconMap[iconName] || ExternalLink;
+    return iconMap[iconName] || MdOpenInNew;
   };
 
   const openLink = (url: string): void => {
@@ -22,7 +23,7 @@ const Socials = () => {
   return (
     <Section spacing="base" containerSize="lg">
       <div className="space-fluid-lg pb-6">
-        <div className="flex justify-center items-center gap-6 sm:gap-8">
+        <div className="flex justify-center items-center gap-[var(--space-lg)]">
           {socials.map((social) => {
             const IconComponent = getIconComponent(social.icon);
 
@@ -40,7 +41,7 @@ const Socials = () => {
                   openLink(social.url);
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--color-primary)';
+                  e.currentTarget.style.color = 'var(--color-accent)';
                   e.currentTarget.style.transform = 'scale(1.1)';
                 }}
                 onMouseLeave={(e) => {

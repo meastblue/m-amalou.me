@@ -1,4 +1,4 @@
-import { Minus, Plus } from 'lucide-react';
+import { MdRemove, MdAdd } from 'react-icons/md';
 import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import { usePortfolio } from '../../hooks/usePortfolio';
 import Pill from '../ui/Pill';
@@ -36,7 +36,7 @@ interface CategoryContentProps {
 const CategoryHeader = ({ category, isExpanded, onToggle }: CategoryHeaderProps) => (
   <button
     onClick={onToggle}
-    className="w-full flex items-center justify-between py-3 md:py-4 text-left transition-all duration-300 rounded-lg px-2 group"
+    className="w-full flex items-center justify-between py-[var(--space-base)] text-left transition-all duration-[var(--duration-base)] rounded-lg px-2 group"
     style={{ backgroundColor: 'transparent' }}
     onMouseEnter={(e) => {
       e.currentTarget.style.backgroundColor = 'var(--bg-surface)';
@@ -49,29 +49,25 @@ const CategoryHeader = ({ category, isExpanded, onToggle }: CategoryHeaderProps)
     aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${category.title} skills`}
   >
     <h3 
-      className="text-fluid-lg font-bold group-hover:scale-[1.02] transition-transform duration-200"
+      className="text-fluid-lg font-bold group-hover:scale-[1.02] transition-transform duration-[var(--duration-fast)]"
       style={{ color: 'var(--text-primary)' }}
     >
       {category.title}
     </h3>
-    <div className="flex-shrink-0 ml-3 md:ml-4">
+    <div className="flex-shrink-0 ml-[var(--space-base)]">
       <div 
-        className="w-6 h-6 md:w-8 md:h-8 rounded-full border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-180"
+        className="w-6 h-6 md:w-8 md:h-8 rounded-full border-2 flex items-center justify-center transition-all duration-[var(--duration-base)] group-hover:scale-110 group-hover:rotate-180"
         style={{ borderColor: 'var(--text-secondary)' }}
       >
         {isExpanded ? (
-          <Minus 
-            size={14} 
-            className="md:w-4 md:h-4" 
+          <MdRemove 
+            size={16} 
             style={{ color: 'var(--text-secondary)' }}
-            strokeWidth={3}
           />
         ) : (
-          <Plus 
-            size={14} 
-            className="md:w-4 md:h-4" 
+          <MdAdd 
+            size={16} 
             style={{ color: 'var(--text-secondary)' }}
-            strokeWidth={3}
           />
         )}
       </div>
@@ -105,7 +101,7 @@ const CategoryContent = ({ category, isClosing, getTechColor }: CategoryContentP
   return (
     <div 
       id={`skills-${category.id}`}
-      className={`mt-3 md:mt-4 space-y-3 md:space-y-4 px-2 ${
+      className={`mt-[var(--space-base)] space-y-[var(--space-base)] px-2 ${
         isClosing ? 'animate-collapse' : 'animate-expand'
       }`}
       role="region"
@@ -122,7 +118,7 @@ const CategoryContent = ({ category, isClosing, getTechColor }: CategoryContentP
       />
 
       <div 
-        className="flex flex-wrap gap-2 md:gap-3 mt-4 md:mt-6"
+        className="flex flex-wrap gap-[var(--space-xs)] mt-[var(--space-lg)]"
         role="list"
         aria-label={`${category.title} technologies`}
       >
@@ -208,10 +204,12 @@ const Skills = () => {
       <div className="space-fluid-xl">
         <h2 
           id="skills-heading"
-          className="text-fluid-2xl font-bold text-left lowercase pb-2"
+          className="text-fluid-2xl font-bold text-left lowercase pb-2 flex items-center gap-4"
           style={{ color: 'var(--text-primary)' }}
         >
+          <span className="font-mono text-lg lg:text-xl" style={{ color: 'var(--color-accent)' }}>04.</span>
           {sections.skills.title}
+          <span className="hidden sm:block h-[1px] flex-1 max-w-xs" style={{ backgroundColor: 'var(--border-color)' }}></span>
         </h2>
 
         <div className="space-fluid-lg" role="list">
