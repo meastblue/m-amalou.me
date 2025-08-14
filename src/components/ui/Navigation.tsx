@@ -111,7 +111,7 @@ const Navigation = () => {
            style={{ 
              writingMode: 'vertical-rl',
              color: 'var(--text-tertiary)',
-             '--tw-ring-color': 'var(--color-accent)'
+             '--tw-ring-color': 'var(--color-accent)' as any
            }}
            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-tertiary)'}
@@ -121,66 +121,6 @@ const Navigation = () => {
         <div className="w-[1px] h-20" style={{ backgroundColor: 'var(--border-color)' }}></div>
       </div>
 
-      {/* Desktop Navigation Dots */}
-      <nav 
-        className={`hidden lg:block fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300 ${
-          isScrolled ? 'opacity-90 scale-95' : 'opacity-100 scale-100'
-        } ${
-          isVisible ? 'translate-y-[-50%]' : 'translate-y-[-200%]'
-        }`}
-        role="navigation"
-        aria-label={t.navigation.section_navigation}
-      >
-        <ul className="flex flex-col gap-8">
-          {navigation.map((item, index) => (
-            <li key={item.id}>
-              <button
-                onClick={() => scrollToSection(item.section)}
-                onKeyDown={(e) => handleKeyDown(e, item.section)}
-                className="group flex items-center gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded-lg p-2 transition-all duration-300 hover:scale-105"
-                style={{
-                  '--tw-ring-color': 'var(--color-accent)'
-                }}
-                aria-label={translate('accessibility.navigate_to', { section: item.label })}
-                aria-current={activeSection === item.section ? 'page' : undefined}
-              >
-                <span className="text-xs font-mono transition-all duration-300"
-                      style={{ 
-                        color: activeSection === item.section 
-                          ? 'var(--color-accent)' 
-                          : 'var(--text-tertiary)'
-                      }}>
-                  0{index + 1}
-                </span>
-                <div className="flex items-center gap-3">
-                  <span className="block transition-all duration-500 ease-out"
-                        style={{
-                          width: activeSection === item.section ? '56px' : '32px',
-                          height: activeSection === item.section ? '3px' : '1px',
-                          backgroundColor: activeSection === item.section 
-                            ? 'var(--color-accent)' 
-                            : 'var(--border-color)',
-                          borderRadius: '2px',
-                          boxShadow: activeSection === item.section 
-                            ? '0 0 8px var(--color-accent-light)' 
-                            : 'none'
-                        }} />
-                  <span className="text-sm transition-all duration-300 group-hover:text-[var(--color-accent)]"
-                        style={{ 
-                          color: activeSection === item.section
-                            ? 'var(--text-primary)'
-                            : 'var(--text-secondary)',
-                          fontWeight: activeSection === item.section ? '600' : '400',
-                          letterSpacing: activeSection === item.section ? '0.025em' : '0'
-                        }}>
-                    {item.label}
-                  </span>
-                </div>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
 
       {/* Mobile Bottom Navigation */}
       <nav
@@ -214,7 +154,7 @@ const Navigation = () => {
                     ? 'var(--color-accent-light)'
                     : 'transparent',
                   fontWeight: activeSection === item.section ? '600' : '500',
-                  '--tw-ring-color': 'var(--color-accent)'
+                  '--tw-ring-color': 'var(--color-accent)' as any
                 }}
                 aria-label={translate('accessibility.navigate_to', { section: item.label })}
                 aria-current={activeSection === item.section ? 'page' : undefined}
