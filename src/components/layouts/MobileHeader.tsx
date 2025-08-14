@@ -1,6 +1,7 @@
 import { useI18n } from '../../hooks/useI18n';
 import { useDarkMode } from '../../hooks/useDarkMode';
-import ThemeToggle from '../UI/ThemeToggle';
+import ThemeToggle from '../ui/ThemeToggle';
+import LanguageSelector from '../ui/LanguageSelector';
 
 const MobileHeader = () => {
   const { t } = useI18n();
@@ -19,11 +20,14 @@ const MobileHeader = () => {
             </p>
           </div>
           
-          <ThemeToggle 
-            isDarkMode={isDarkMode} 
-            toggleDarkMode={toggleDarkMode} 
-            size="sm" 
-          />
+          <div className="flex flex-col items-center gap-2">
+            <ThemeToggle 
+              isDarkMode={isDarkMode} 
+              toggleDarkMode={toggleDarkMode} 
+              size="sm" 
+            />
+            <LanguageSelector size="sm" />
+          </div>
         </div>
       </div>
     </div>

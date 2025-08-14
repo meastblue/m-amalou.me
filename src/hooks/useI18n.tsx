@@ -204,18 +204,12 @@ interface I18nProviderProps {
 
 export const I18nProvider = ({ children, defaultLanguage = 'fr' }: I18nProviderProps) => {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
-  const [translations, setTranslations] = useState<TranslationData | null>(null);
+  const [translations, setTranslations] = useState<TranslationData | null>(frTranslations);
 
   useEffect(() => {
     const currentTranslations = language === 'fr' ? frTranslations : enTranslations;
     setTranslations(currentTranslations);
   }, [language]);
-
-  useEffect(() => {
-    if (!translations) {
-      setTranslations(frTranslations);
-    }
-  }, [translations]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

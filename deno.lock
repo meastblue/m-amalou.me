@@ -6,6 +6,7 @@
     "npm:@types/react-dom@^19.1.7": "19.1.7_@types+react@19.1.10",
     "npm:@types/react@^19.1.10": "19.1.10",
     "npm:astro@^5.12.9": "5.12.9_vite@6.3.5__picomatch@4.0.3_zod@3.25.76",
+    "npm:motion@^12.23.12": "12.23.12_react@19.1.1_react-dom@19.1.1__react@19.1.1",
     "npm:react-dom@^19.1.1": "19.1.1_react@19.1.1",
     "npm:react-icons@^5.5.0": "5.5.0_react@19.1.1",
     "npm:react@^19.1.1": "19.1.1",
@@ -1171,6 +1172,16 @@
         "unicode-trie"
       ]
     },
+    "framer-motion@12.23.12_react@19.1.1_react-dom@19.1.1__react@19.1.1": {
+      "integrity": "sha512-6e78rdVtnBvlEVgu6eFEAgG9v3wLnYEboM8I5O5EXvfKC8gxGQB8wXJdhkMy10iVcn05jl6CNw7/HTsTCfwcWg==",
+      "dependencies": [
+        "motion-dom",
+        "motion-utils",
+        "react",
+        "react-dom",
+        "tslib"
+      ]
+    },
     "fsevents@2.3.3": {
       "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw=="
     },
@@ -1834,6 +1845,24 @@
     },
     "mkdirp@3.0.1": {
       "integrity": "sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg=="
+    },
+    "motion-dom@12.23.12": {
+      "integrity": "sha512-RcR4fvMCTESQBD/uKQe49D5RUeDOokkGRmz4ceaJKDBgHYtZtntC/s2vLvY38gqGaytinij/yi3hMcWVcEF5Kw==",
+      "dependencies": [
+        "motion-utils"
+      ]
+    },
+    "motion-utils@12.23.6": {
+      "integrity": "sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ=="
+    },
+    "motion@12.23.12_react@19.1.1_react-dom@19.1.1__react@19.1.1": {
+      "integrity": "sha512-8jCD8uW5GD1csOoqh1WhH1A6j5APHVE15nuBkFeRiMzYBdRwyAHmSP/oXSuW0WJPZRXTFdBoG4hY9TFWNhhwng==",
+      "dependencies": [
+        "framer-motion",
+        "react",
+        "react-dom",
+        "tslib"
+      ]
     },
     "mrmime@2.0.1": {
       "integrity": "sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ=="
@@ -2549,6 +2578,7 @@
         "npm:@types/react-dom@^19.1.7",
         "npm:@types/react@^19.1.10",
         "npm:astro@^5.12.9",
+        "npm:motion@^12.23.12",
         "npm:react-dom@^19.1.1",
         "npm:react-icons@^5.5.0",
         "npm:react@^19.1.1",

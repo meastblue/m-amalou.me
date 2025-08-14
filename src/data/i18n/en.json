@@ -222,5 +222,36 @@
     "title": "Massinissa Amalou - Software & Solution Architect",
     "description": "Senior software architect based in Paris, expert in designing robust and scalable architectures. Specialized in API governance, microservices and digital transformation.",
     "keywords": "software architect, solution architect, fullstack developer, React, Angular, Vue.js, NestJS, API, microservices, Paris"
+  },
+  "ui": {
+    "skip_to_content": "Skip to main content",
+    "fullstack_developer": "fullstack web/mobile developer",
+    "send_mail": "Send mail",
+    "get_in_touch": "get in touch with me",
+    "required": "*",
+    "view_project": "View project",
+    "downloads": "downloads",
+    "installs": "installs"
+  },
+  "layout": {
+    "name": "Massinissa Amalou",
+    "loading_translations": "🌍 Loading translations..."
+  },
+  "about": {
+    "content": "Senior software architect with 6+ years of experience, specialized in technical leadership, REST API governance and complex information system modernization. My methodology covers the entire project lifecycle: target architecture definition, fullstack development (React.js, Angular, Vue.js, NestJS), production deployment and monitoring. Expert in cloud-native and microservices application architectures, I ensure solution robustness, scalability and performance. My interventions at Autodistribution, Crédit Agricole CIB and Société Générale demonstrate my ability to lead large-scale digital transformations.",
+    "hero_content": "Massinissa Amalou, software & solution architect based in Paris. Expert in designing robust and scalable architectures, I support teams in their strategic digital transformation and information system modernization projects."
+  },
+  "sections_labels": {
+    "about": "about",
+    "career": "Experience",
+    "work": "Work",
+    "skills": "Skills"
+  },
+  "numbers": {
+    "01": "01.",
+    "02": "02.",
+    "03": "03.",
+    "04": "04.",
+    "05": "05."
   }
 }

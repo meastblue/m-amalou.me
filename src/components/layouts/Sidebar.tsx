@@ -1,7 +1,8 @@
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { useI18n } from '../../hooks/useI18n';
-import SocialLinks from '../UI/SocialLinks';
-import ThemeToggle from '../UI/ThemeToggle';
+import SocialLinks from '../ui/SocialLinks';
+import ThemeToggle from '../ui/ThemeToggle';
+import LanguageSelector from '../ui/LanguageSelector';
 import NavigationMenu from '../navigation/NavigationMenu';
 
 interface SidebarProps {
@@ -23,21 +24,22 @@ const Sidebar = ({ sections, activeSection, scrollProgress, onSectionClick }: Si
     <aside className="hidden lg:flex w-1/2 fixed left-0 top-0 h-screen flex-col justify-between p-12 bg-[var(--bg-secondary)]">
       <div className="w-full max-w-md mx-auto flex flex-col justify-between h-full py-24">
         <div className="mb-16">
-          <div className="flex justify-between items-center gap-8 mb-3">
-            <h1 className="text-5xl font-bold leading-tight whitespace-nowrap text-[var(--text-primary)]">
-              {t.layout.name}
-            </h1>
+          <h1 className="text-5xl font-bold leading-tight whitespace-nowrap text-[var(--text-primary)] mb-3">
+            {t.layout.name}
+          </h1>
 
+          <p className="text-lg text-[var(--text-secondary)] mb-4">
+            {t.ui.fullstack_developer}
+          </p>
+
+          <div className="flex flex-row items-center gap-2">
             <ThemeToggle
               isDarkMode={isDarkMode}
               toggleDarkMode={toggleDarkMode}
               size="lg"
             />
+            <LanguageSelector size="lg" />
           </div>
-
-          <p className="text-lg text-[var(--text-secondary)]">
-            {t.ui.fullstack_developer}
-          </p>
         </div>
 
         <NavigationMenu

@@ -6,7 +6,8 @@ import AboutSection from '../sections/AboutSection';
 import CareerAndScholarship from '../sections/CareerAndScholarship';
 import Projects from '../sections/Projects';
 import Skills from '../sections/Skills';
-import SocialLinks from '../UI/SocialLinks';
+import SocialLinks from '../ui/SocialLinks';
+import CursorHalo from '../effects/CursorHalo';
 import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
 
@@ -80,7 +81,10 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-[var(--bg-primary)]">
+    <div className="min-h-screen flex bg-[var(--bg-primary)] relative overflow-hidden">
+      {/* Cursor halo effect */}
+      <CursorHalo />
+      
       <Sidebar
         sections={sections}
         activeSection={activeSection}

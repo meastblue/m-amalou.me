@@ -140,13 +140,13 @@
   ],
   "ui": {
     "skip_to_content": "Aller au contenu principal",
-    "fullstack_developer": "fullstack web/mobile developer",
-    "send_mail": "Send mail",
-    "get_in_touch": "get in touch with me",
+    "fullstack_developer": "développeur fullstack web/mobile",
+    "send_mail": "Envoyer",
+    "get_in_touch": "restons en contact",
     "required": "*",
-    "view_project": "View project",
-    "downloads": "downloads",
-    "installs": "installs"
+    "view_project": "Voir le projet",
+    "downloads": "téléchargements",
+    "installs": "installations"
   },
   "layout": {
     "name": "Massinissa Amalou",
@@ -194,8 +194,8 @@
       "submitFailed": "Échec de l'envoi. Veuillez réessayer."
     },
     "buttons": {
-      "submit": "Send mail",
-      "submitting": "Sending..."
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours..."
     },
     "messages": {
       "success": "Message envoyé avec succès !",
